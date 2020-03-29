@@ -1,20 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="631edc32-71a0-4169-a9a6-ab326cb42ae0" name="Default Changelist" comment="" />
+    <list default="true" id="631edc32-71a0-4169-a9a6-ab326cb42ae0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/free-mybatis-generator-config.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api/CommonPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api/CommonResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api/IErrorCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api/ResultCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api/SomeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/document/dump-lost_found-202003291537.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/document/dump-lost_found-202003291551.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/Applocation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/config/MybatisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/config/SwaggerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/LostItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/dto/LostItemDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/dto/PageQueryPara.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/dto/PickerDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/LostItemService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/LostItemServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mbg/src/main/java/team/cfc/lostandfound/dao/LostItemDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mbg/src/main/java/team/cfc/lostandfound/dao/PickerDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mbg/src/main/java/team/cfc/lostandfound/model/LostItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mbg/src/main/java/team/cfc/lostandfound/model/Picker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mbg/src/main/resources/team/cfc/lostandfound/mapper/LostItemDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mbg/src/main/resources/team/cfc/lostandfound/mapper/PickerDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/portal/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mbg/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - lost_found@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - lost_found@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - lost_found@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="lost_found: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:/Program Files (x86)/Apache Software Foundation/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
@@ -22,21 +102,151 @@
     </option>
   </component>
   <component name="ProjectId" id="1ZX76rSpZTJkJ85LgtN9xfY6LAr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="718" />
+    <property name="RequestMappingsPanelWidth1" value="717" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/mbg/src/main/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="team.cfc.lostandfound.common.api" />
+      <recent name="team.cfc.lostandfound.config" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\lostandfound\common\src\main\java\team\cfc\lostandfound\common\api" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Applocation">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="team.cfc.lostandfound.Applocation" />
+      <module name="main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ECS on Alibaba Cloud" type="ECS_RUN_CONFIGRATION" factoryName="Ecs configuration factory">
+      <option name="address" />
+      <option name="afterCommand" value="" />
+      <option name="alreadyReset" value="true" />
+      <option name="autoOpen" value="false" />
+      <option name="beforeCommand" />
+      <option name="defaultTabIdx" value="0" />
+      <option name="ecsInstance">
+        <EcsInstance>
+          <option name="OSType" value="linux" />
+          <option name="instanceId" value="i-bp1e3t4tj14m54q06ati" />
+          <option name="instanceName" value="hy的服务器1" />
+          <option name="netType" value="vpc" />
+          <option name="privateIps" value="172.16.33.98" />
+          <option name="publicIps" value="116.62.186.144" />
+          <option name="regionId" value="cn-hangzhou" />
+          <option name="tags">
+            <list />
+          </option>
+        </EcsInstance>
+      </option>
+      <option name="hostTagId" value="0" />
+      <option name="location" value="/root/demo" />
+      <option name="pathOrUrl" value="D:\IdeaProjects\lostandfound\target\lostandfound-1.0-SNAPSHOT.pom" />
+      <option name="tagId" value="0" />
+      <option name="terminalCommand" />
+      <option name="type" value="ECS" />
+      <option name="uploadType" value="FILE" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="clean package" />
+      </method>
+    </configuration>
+    <configuration name="Applocation" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="team.cfc.lostandfound.Applocation" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="docker/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildCliOptions" value="" />
+          <option name="buildOnly" value="true" />
+          <option name="command" value="" />
+          <option name="containerName" value="" />
+          <option name="entrypoint" value="" />
+          <option name="imageTag" value="" />
+          <option name="commandLineOptions" value="" />
+          <option name="sourceFilePath" value="src/main/docker/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Docker.docker/Dockerfile" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SQLScriptSettings">
+    <option name="matrix">
+      <map>
+        <entry key="MYSQL.CreateComplete" value="CreateIfNotExists=1" />
+      </map>
+    </option>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:MySQL - lost_found@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:MySQL - lost_found@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@d0c28a" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -48,17 +258,176 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584973412786</updated>
-      <workItem from="1584973415452" duration="1464000" />
+      <workItem from="1584973415452" duration="2718000" />
+      <workItem from="1585103164309" duration="7810000" />
+      <workItem from="1585136573517" duration="12109000" />
+      <workItem from="1585191032274" duration="9031000" />
+      <workItem from="1585211826412" duration="14311000" />
+      <workItem from="1585283010696" duration="3695000" />
+      <workItem from="1585299877035" duration="618000" />
+      <workItem from="1585300511666" duration="31055000" />
+      <workItem from="1585454449373" duration="13191000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="178" y="116" key="new project wizard" timestamp="1584973677578">
+    <state x="360" y="73" key="#Docker" timestamp="1585140543160">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="178" y="116" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1584973677578" />
+    <state x="360" y="73" key="#Docker/0.0.1536.824@0.0.1536.824" timestamp="1585140543160" />
+    <state x="484" y="98" key="#ECS_on_Alibaba_Cloud" timestamp="1585193141386">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="484" y="98" key="#ECS_on_Alibaba_Cloud/0.0.1536.824@0.0.1536.824" timestamp="1585193141386" />
+    <state x="361" y="73" key="#HTTP_Proxy" timestamp="1585116402406">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="73" key="#HTTP_Proxy/0.0.1536.824@0.0.1536.824" timestamp="1585116402406" />
+    <state x="361" y="74" key="#Project_Structure" timestamp="1585229943685">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="74" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1585229943685" />
+    <state x="361" y="74" key="#SQL_Dialects" timestamp="1585370319117">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="74" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1585370319117" />
+    <state x="610" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585211170654">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="610" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585211170654" />
+    <state x="513" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585234495824">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="513" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585234495824" />
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1585404274422">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585404274422" />
+    <state x="499" y="193" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1585218569135">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="193" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1585218569135" />
+    <state x="428" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585229693608">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="428" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1585229693608" />
+    <state x="553" y="279" width="429" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585380784168">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="553" y="279" width="429" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585380784168" />
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585300046010">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585300046010" />
+    <state x="484" y="9" key="#docker/Dockerfile" timestamp="1585140549348">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="484" y="9" key="#docker/Dockerfile/0.0.1536.824@0.0.1536.824" timestamp="1585140549348" />
+    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1585191353625">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585191353625" />
+    <state width="1493" height="244" key="GridCell.Tab.0.bottom" timestamp="1585492882952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585492882952" />
+    <state width="1493" height="244" key="GridCell.Tab.0.center" timestamp="1585492882952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585492882952" />
+    <state width="1493" height="244" key="GridCell.Tab.0.left" timestamp="1585492882952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585492882952" />
+    <state width="1493" height="244" key="GridCell.Tab.0.right" timestamp="1585492882952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585492882952" />
+    <state width="1493" height="244" key="GridCell.Tab.1.bottom" timestamp="1585492882953">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585492882953" />
+    <state width="1493" height="244" key="GridCell.Tab.1.center" timestamp="1585492882952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585492882952" />
+    <state width="1493" height="244" key="GridCell.Tab.1.left" timestamp="1585492882952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585492882952" />
+    <state width="1493" height="244" key="GridCell.Tab.1.right" timestamp="1585492882952">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="244" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585492882952" />
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1585449805889">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585449805889" />
+    <state width="1493" height="261" key="GridCell.Tab.2.center" timestamp="1585449805889">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1585449805889" />
+    <state width="1493" height="261" key="GridCell.Tab.2.left" timestamp="1585449805889">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1585449805889" />
+    <state width="1493" height="261" key="GridCell.Tab.2.right" timestamp="1585449805889">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1585449805889" />
+    <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1585211126781">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1585211126781" />
+    <state x="349" y="150" key="IDE.errors.dialog" timestamp="1585229805226">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="150" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1585229805226" />
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog" timestamp="1585404908123">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1585404908123" />
+    <state x="282" y="51" key="SettingsEditor" timestamp="1585300495052">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="282" y="51" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585300495052" />
+    <state x="565" y="193" key="chooseDestDirectoryDialog" timestamp="1585219390053">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="565" y="193" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1585219390053" />
+    <state x="349" y="70" key="com.intellij.database.dbimport.ImportDialog" timestamp="1585218511612">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="349" y="70" key="com.intellij.database.dbimport.ImportDialog/0.0.1536.824@0.0.1536.824" timestamp="1585218511612" />
+    <state x="485" y="60" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1585310634058">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="485" y="60" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1585310634058" />
+    <state x="461" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1585299883899">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="461" y="240" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585299883899" />
+    <state x="457" y="44" width="621" height="735" key="find.popup" timestamp="1585218664357">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="457" y="44" width="621" height="735" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1585218664357" />
+    <state x="178" y="116" key="new project wizard" timestamp="1585211760615">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="178" y="116" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1585211760615" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1585408861629">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1585408861629" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1585469359662">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585469359662" />
   </component>
 </project>

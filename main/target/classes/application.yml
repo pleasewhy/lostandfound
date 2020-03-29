@@ -1,0 +1,25 @@
+server:
+  servlet:
+    context-path: /lostandfound
+
+spring:
+  profiles:
+    active: prod #默认为开发环境
+  servlet:
+    multipart:
+      max-file-size: 10MB  # 文件大小限制为10MB
+  datasource:
+    url: jdbc:mysql://localhost:3306/lost_found?useUnicode=true&characterEncoding=utf-8&charset=utf8mb4&
+                          serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations:
+    - classpath*:/team/cfc/lostandfound/mapper/*.xml
+logging:
+  file:
+    path: D:/static
+  level:
+    root: error

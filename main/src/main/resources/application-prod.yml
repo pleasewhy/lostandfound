@@ -1,0 +1,10 @@
+web:
+  upload-path: /root/static/image
+  endpoint: http://116.62.186.144/lostandfound
+
+spring:
+  mvc:
+    static-path-pattern: /**  # 静态文件的匹配
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,\
+      classpath:/static/,classpath:/public/,file:${web.upload-path}  # 静态文件的查找路径
