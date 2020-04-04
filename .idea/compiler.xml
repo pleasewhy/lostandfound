@@ -9,6 +9,7 @@
         <module name="main" />
         <module name="common" />
         <module name="mbg" />
+        <module name="security" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
       <module name="main" options="-parameters" />
       <module name="mbg" options="-parameters" />
       <module name="portal" options="-parameters" />
+      <module name="security" options="-parameters" />
     </option>
   </component>
 </project>

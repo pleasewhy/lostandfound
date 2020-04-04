@@ -1,6 +1,11 @@
 server:
   servlet:
     context-path: /lostandfound
+jwt:
+  tokenHeader: Authorization
+  secret: lostandfound-secret
+  expiration: 604800
+  tokenHead: Bearer
 
 spring:
   profiles:
