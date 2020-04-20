@@ -13,11 +13,10 @@ import org.springframework.web.multipart.MultipartFile;
 import team.cfc.lostandfound.common.api.CommonPage;
 import team.cfc.lostandfound.common.api.CommonResult;
 import team.cfc.lostandfound.common.api.SomeUtils;
-import team.cfc.lostandfound.dto.LostItemDto;
 import team.cfc.lostandfound.model.LostItem;
-import team.cfc.lostandfound.model.Picker;
 import team.cfc.lostandfound.service.LostItemService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -61,7 +60,11 @@ public class LostItemController {
 
     @ApiOperation("上传丢失物")
     @RequestMapping(value = "/uploadLostItem", method = RequestMethod.POST)
-    public CommonResult uploadLostItem(@RequestBody LostItemDto lostItem, BindingResult bindingResult) {
+    public CommonResult uploadLostItem(@RequestBody LostItem lostItem, HttpServletRequest request, BindingResult bindingResult) {
+        String username = (String)request.getAttribute("username");
+//        int pickerId =
+        lostItem.setPicker(username);
+
         if (bindingResult.hasErrors()) {
             return CommonResult.failed("上传失败");
         }

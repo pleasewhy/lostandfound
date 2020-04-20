@@ -2,7 +2,6 @@ package team.cfc.lostandfound.dto;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
-import team.cfc.lostandfound.model.Picker;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -26,7 +25,7 @@ public class LostItemDto {
     /**
      * 拾取人信息
      */
-    private Picker picker;
+    private String pickerId;
 
     /**
      * 拾取日期

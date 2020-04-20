@@ -23,9 +23,9 @@ public class LostItem implements Serializable {
     private String description;
 
     /**
-     * 拾取人信息
+     * 拾取人信息 对应wx_user的open_id和app_user的username
      */
-    private Integer pickerId;
+    private String picker;
 
     /**
      * 拾取日期
@@ -61,6 +61,11 @@ public class LostItem implements Serializable {
      * 归还时间
      */
     private Date returnTime;
+
+    /**
+     * 区域id
+     */
+    private Integer regionId;
 
     private static final long serialVersionUID = 1L;
 }

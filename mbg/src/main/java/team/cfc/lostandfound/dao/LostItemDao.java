@@ -27,5 +27,4 @@ public interface LostItemDao {
     int updateByPrimaryKeySelective(LostItem record);
 
     int updateByPrimaryKey(LostItem record);
-
 }

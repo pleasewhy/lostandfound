@@ -332,63 +332,73 @@ public class LostItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdIsNull() {
-            addCriterion("picker_id is null");
+        public Criteria andPickerIsNull() {
+            addCriterion("picker is null");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdIsNotNull() {
-            addCriterion("picker_id is not null");
+        public Criteria andPickerIsNotNull() {
+            addCriterion("picker is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdEqualTo(Integer value) {
-            addCriterion("picker_id =", value, "pickerId");
+        public Criteria andPickerEqualTo(String value) {
+            addCriterion("picker =", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdNotEqualTo(Integer value) {
-            addCriterion("picker_id <>", value, "pickerId");
+        public Criteria andPickerNotEqualTo(String value) {
+            addCriterion("picker <>", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdGreaterThan(Integer value) {
-            addCriterion("picker_id >", value, "pickerId");
+        public Criteria andPickerGreaterThan(String value) {
+            addCriterion("picker >", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("picker_id >=", value, "pickerId");
+        public Criteria andPickerGreaterThanOrEqualTo(String value) {
+            addCriterion("picker >=", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdLessThan(Integer value) {
-            addCriterion("picker_id <", value, "pickerId");
+        public Criteria andPickerLessThan(String value) {
+            addCriterion("picker <", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdLessThanOrEqualTo(Integer value) {
-            addCriterion("picker_id <=", value, "pickerId");
+        public Criteria andPickerLessThanOrEqualTo(String value) {
+            addCriterion("picker <=", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdIn(List<Integer> values) {
-            addCriterion("picker_id in", values, "pickerId");
+        public Criteria andPickerLike(String value) {
+            addCriterion("picker like", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdNotIn(List<Integer> values) {
-            addCriterion("picker_id not in", values, "pickerId");
+        public Criteria andPickerNotLike(String value) {
+            addCriterion("picker not like", value, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdBetween(Integer value1, Integer value2) {
-            addCriterion("picker_id between", value1, value2, "pickerId");
+        public Criteria andPickerIn(List<String> values) {
+            addCriterion("picker in", values, "picker");
             return (Criteria) this;
         }
 
-        public Criteria andPickerIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("picker_id not between", value1, value2, "pickerId");
+        public Criteria andPickerNotIn(List<String> values) {
+            addCriterion("picker not in", values, "picker");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickerBetween(String value1, String value2) {
+            addCriterion("picker between", value1, value2, "picker");
+            return (Criteria) this;
+        }
+
+        public Criteria andPickerNotBetween(String value1, String value2) {
+            addCriterion("picker not between", value1, value2, "picker");
             return (Criteria) this;
         }
 
@@ -849,6 +859,66 @@ public class LostItemExample {
 
         public Criteria andReturnTimeNotBetween(Date value1, Date value2) {
             addCriterion("return_time not between", value1, value2, "returnTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdIsNull() {
+            addCriterion("region_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdIsNotNull() {
+            addCriterion("region_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdEqualTo(Integer value) {
+            addCriterion("region_id =", value, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdNotEqualTo(Integer value) {
+            addCriterion("region_id <>", value, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdGreaterThan(Integer value) {
+            addCriterion("region_id >", value, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("region_id >=", value, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdLessThan(Integer value) {
+            addCriterion("region_id <", value, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("region_id <=", value, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdIn(List<Integer> values) {
+            addCriterion("region_id in", values, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdNotIn(List<Integer> values) {
+            addCriterion("region_id not in", values, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdBetween(Integer value1, Integer value2) {
+            addCriterion("region_id between", value1, value2, "regionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andRegionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("region_id not between", value1, value2, "regionId");
             return (Criteria) this;
         }
     }

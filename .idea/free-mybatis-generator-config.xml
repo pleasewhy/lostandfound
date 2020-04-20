@@ -3,23 +3,23 @@
   <component name="PersistentConfig">
     <option name="historyConfigList">
       <map>
-        <entry key="lost_item">
+        <entry key="admin">
           <value>
             <Config>
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
-              <option name="daoName" value="LostItemDao" />
+              <option name="daoName" value="AdminDao" />
               <option name="daoPackage" value="team.cfc.lostandfound.dao" />
               <option name="daoPostfix" value="Dao" />
               <option name="modelMvnPath" value="src/main/java" />
-              <option name="modelName" value="LostItem" />
+              <option name="modelName" value="Admin" />
               <option name="modelPackage" value="team.cfc.lostandfound.model" />
-              <option name="name" value="lost_item" />
+              <option name="name" value="admin" />
               <option name="overrideJava" value="true" />
               <option name="overrideXML" value="true" />
               <option name="primaryKey" value="id" />
               <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
-              <option name="tableName" value="lost_item" />
+              <option name="tableName" value="admin" />
               <option name="useExample" value="true" />
               <option name="useLombokPlugin" value="true" />
               <option name="useSchemaPrefix" value="true" />
@@ -28,23 +28,173 @@
             </Config>
           </value>
         </entry>
-        <entry key="picker">
+        <entry key="apply_manager_msg">
           <value>
             <Config>
               <option name="comment" value="true" />
               <option name="daoMvnPath" value="src/main/java" />
-              <option name="daoName" value="PickerDao" />
+              <option name="daoName" value="ApplyManagerMsgDao" />
               <option name="daoPackage" value="team.cfc.lostandfound.dao" />
               <option name="daoPostfix" value="Dao" />
               <option name="modelMvnPath" value="src/main/java" />
-              <option name="modelName" value="Picker" />
+              <option name="modelName" value="ApplyManagerMsg" />
               <option name="modelPackage" value="team.cfc.lostandfound.model" />
-              <option name="name" value="picker" />
+              <option name="name" value="apply_manager_msg" />
               <option name="overrideJava" value="true" />
               <option name="overrideXML" value="true" />
               <option name="primaryKey" value="id" />
               <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
-              <option name="tableName" value="picker" />
+              <option name="tableName" value="apply_manager_msg" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="team.cfc.lostandfound.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="apply_region_message">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ApplyRegionMessageDao" />
+              <option name="daoPackage" value="team.cfc.lostandfound.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="ApplyRegionMessage" />
+              <option name="modelPackage" value="team.cfc.lostandfound.model" />
+              <option name="name" value="apply_region_message" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
+              <option name="tableName" value="apply_region_message" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="team.cfc.lostandfound.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="apply_region_msg">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="ApplyRegionMsgDao" />
+              <option name="daoPackage" value="team.cfc.lostandfound.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="ApplyRegionMsg" />
+              <option name="modelPackage" value="team.cfc.lostandfound.model" />
+              <option name="name" value="apply_region_msg" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
+              <option name="tableName" value="apply_region_msg" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="team.cfc.lostandfound.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="region">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="RegionDao" />
+              <option name="daoPackage" value="team.cfc.lostandfound.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="Region" />
+              <option name="modelPackage" value="team.cfc.lostandfound.model" />
+              <option name="name" value="region" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
+              <option name="tableName" value="region" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="team.cfc.lostandfound.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="region_create_relation">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="RegionCreateRelationDao" />
+              <option name="daoPackage" value="team.cfc.lostandfound.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="RegionCreateRelation" />
+              <option name="modelPackage" value="team.cfc.lostandfound.model" />
+              <option name="name" value="region_create_relation" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
+              <option name="tableName" value="region_create_relation" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="team.cfc.lostandfound.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="region_manager_relation">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="RegionManagerRelationDao" />
+              <option name="daoPackage" value="team.cfc.lostandfound.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="RegionManagerRelation" />
+              <option name="modelPackage" value="team.cfc.lostandfound.model" />
+              <option name="name" value="region_manager_relation" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
+              <option name="tableName" value="region_manager_relation" />
+              <option name="useExample" value="true" />
+              <option name="useLombokPlugin" value="true" />
+              <option name="useSchemaPrefix" value="true" />
+              <option name="xmlMvnPath" value="src/main/resources" />
+              <option name="xmlPackage" value="team.cfc.lostandfound.mapper" />
+            </Config>
+          </value>
+        </entry>
+        <entry key="region_manager_wx_user_relation">
+          <value>
+            <Config>
+              <option name="comment" value="true" />
+              <option name="daoMvnPath" value="src/main/java" />
+              <option name="daoName" value="RegionManagerWxUserRelationDao" />
+              <option name="daoPackage" value="team.cfc.lostandfound.dao" />
+              <option name="daoPostfix" value="Dao" />
+              <option name="modelMvnPath" value="src/main/java" />
+              <option name="modelName" value="RegionManagerWxUserRelation" />
+              <option name="modelPackage" value="team.cfc.lostandfound.model" />
+              <option name="name" value="region_manager_wx_user_relation" />
+              <option name="overrideJava" value="true" />
+              <option name="overrideXML" value="true" />
+              <option name="primaryKey" value="id" />
+              <option name="projectFolder" value="$PROJECT_DIR$/mbg" />
+              <option name="tableName" value="region_manager_wx_user_relation" />
               <option name="useExample" value="true" />
               <option name="useLombokPlugin" value="true" />
               <option name="useSchemaPrefix" value="true" />

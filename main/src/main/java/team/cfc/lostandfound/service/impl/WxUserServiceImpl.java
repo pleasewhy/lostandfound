@@ -18,7 +18,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import team.cfc.lostandfound.bo.WxUserDetails;
+import team.cfc.lostandfound.common.api.CommonResult;
+import team.cfc.lostandfound.dao.ApplyManagerMsgDao;
 import team.cfc.lostandfound.dao.WxUserDao;
+import team.cfc.lostandfound.model.ApplyManagerMsg;
 import team.cfc.lostandfound.model.WxUser;
 import team.cfc.lostandfound.model.WxUserExample;
 import team.cfc.lostandfound.security.util.JwtTokenUtil;
@@ -26,9 +29,7 @@ import team.cfc.lostandfound.service.WxUserService;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class WxUserServiceImpl implements WxUserService {
@@ -47,6 +48,9 @@ public class WxUserServiceImpl implements WxUserService {
     @Autowired
     JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
+    ApplyManagerMsgDao applyRegionMsgDao;
+
     @Override
     public Map<String, Object> login(String code) {
         StringBuffer loginUrl = new StringBuffer();
@@ -57,21 +61,39 @@ public class WxUserServiceImpl implements WxUserService {
         String body = getBody(loginUrl.toString());
         Map<String, Object> responseMap = JSONUtil.parseObj(body);
         if ((Integer) responseMap.getOrDefault("errcode", 0) == 0) {
-            WxUser wxUser = insertWxUser((String) responseMap.get("open_id"), (String) responseMap.get("session_key"));
-            Map<String,Object> tokenMap = new HashMap<>();
-            String token = jwtTokenUtil.generateToken(new WxUserDetails(wxUser));
-            tokenMap.put("token", tokenHead+" "+token);
+            String openId = (String) responseMap.get("open_id");
+            String sessionKey = (String) responseMap.get("session_key");
+            int count = insertWxUser(openId, sessionKey);
+            Map<String, Object> tokenMap = new HashMap<>();
+            String token = jwtTokenUtil.generateToken(loadUserByUsername(openId));
+            tokenMap.put("token", tokenHead + " " + token);
             return tokenMap;
         }
         return responseMap;
     }
 
+
     @Override
-    public UserDetails loadUserByOpenId(String username) {
+    public UserDetails loadUserByUsername(String username) {
+        WxUser wxUser = getWxUserByOpenId(username);
+        if (wxUser != null) {
+            return new WxUserDetails(wxUser);
+        }
         return null;
     }
 
-    public WxUser insertWxUser(String openId, String sessionKey) {
+    @Override
+    public WxUser getWxUserByOpenId(String openId) {
+        WxUserExample example = new WxUserExample();
+        example.createCriteria().andOpenIdEqualTo(openId);
+        List<WxUser> wxUsers = wxUserDao.selectByExample(example);
+        if (wxUsers != null && wxUsers.size() > 0) {
+            return wxUsers.get(0);
+        }
+        return null;
+    }
+
+    public int insertWxUser(String openId, String sessionKey) {
         WxUser wxUser = new WxUser();
         wxUser.setOpenId(openId);
         wxUser.setSessionKey(sessionKey);
@@ -82,10 +104,9 @@ public class WxUserServiceImpl implements WxUserService {
         example.createCriteria().andOpenIdEqualTo(openId);
         List<WxUser> wxUsers = wxUserDao.selectByExample(example);
         if (wxUsers.size() < 1) {
-            wxUserDao.insertSelective(wxUser);
-            return wxUser;
+            return wxUserDao.insertSelective(wxUser);
         }
-        return wxUsers.get(0);
+        return 0;
     }
 
     public String getBody(String url) {

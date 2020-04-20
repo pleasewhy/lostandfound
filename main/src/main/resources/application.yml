@@ -15,16 +15,39 @@ spring:
       max-file-size: 10MB  # 文件大小限制为10MB
   datasource:
     url: jdbc:mysql://localhost:3306/lost_found?useUnicode=true&characterEncoding=utf-8&charset=utf8mb4&
-                          serverTimezone=Asia/Shanghai
+      serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+source:
+  ignored:
+    urls:
+      - /wxUser/login
+      - /admin/login
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.jpg
+      - /**/*.ico
+      - /**/*.mp4
+      - /actuator/**
 
 mybatis:
   mapper-locations:
     - classpath*:/team/cfc/lostandfound/mapper/*.xml
-logging:
-  file:
-    path: D:/static
-  level:
-    root: info
+
+
+spring.mail.host: smtp.qq.com
+spring.mail.username: 1943788269@qq.com
+spring.mail.password: ssbhopzxfbqaefcg
+spring.mail.default-encoding: UTF-8
+spring.mail.port: 465
+spring.mail.properties.mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+spring.mail.properties.mail.debug: true
+redis:
+  key:
+    prefix:
+      authCode: "portal:authCode:"
+    expire:
+      authCode: 120 # 验证码超期时间sudo
+

@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="picker_id" jdbcType="INTEGER" property="pickerId" />
+    <result column="picker" jdbcType="VARCHAR" property="picker" />
     <result column="pick_date" jdbcType="DATE" property="pickDate" />
     <result column="pick_address" jdbcType="VARCHAR" property="pickAddress" />
     <result column="image" jdbcType="VARCHAR" property="image" />
@@ -13,6 +13,7 @@
     <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
     <result column="owner_telephone" jdbcType="VARCHAR" property="ownerTelephone" />
     <result column="return_time" jdbcType="TIMESTAMP" property="returnTime" />
+    <result column="region_id" jdbcType="INTEGER" property="regionId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,8 +74,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, description, picker_id, pick_date, pick_address, image, `status`, owner_name, 
-    owner_telephone, return_time
+    id, `name`, description, picker, pick_date, pick_address, image, `status`, owner_name, 
+    owner_telephone, return_time, region_id
   </sql>
   <select id="selectByExample" parameterType="team.cfc.lostandfound.model.LostItemExample" resultMap="BaseResultMap">
     select
@@ -107,14 +108,14 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.LostItem" useGeneratedKeys="true">
-    insert into lost_item (`name`, description, picker_id, 
+    insert into lost_item (`name`, description, picker, 
       pick_date, pick_address, image, 
       `status`, owner_name, owner_telephone, 
-      return_time)
-    values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{pickerId,jdbcType=INTEGER}, 
+      return_time, region_id)
+    values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{picker,jdbcType=VARCHAR}, 
       #{pickDate,jdbcType=DATE}, #{pickAddress,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{ownerName,jdbcType=VARCHAR}, #{ownerTelephone,jdbcType=VARCHAR}, 
-      #{returnTime,jdbcType=TIMESTAMP})
+      #{returnTime,jdbcType=TIMESTAMP}, #{regionId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.LostItem" useGeneratedKeys="true">
     insert into lost_item
@@ -125,8 +126,8 @@
       <if test="description != null">
         description,
       </if>
-      <if test="pickerId != null">
-        picker_id,
+      <if test="picker != null">
+        picker,
       </if>
       <if test="pickDate != null">
         pick_date,
@@ -149,6 +150,9 @@
       <if test="returnTime != null">
         return_time,
       </if>
+      <if test="regionId != null">
+        region_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -157,8 +161,8 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="pickerId != null">
-        #{pickerId,jdbcType=INTEGER},
+      <if test="picker != null">
+        #{picker,jdbcType=VARCHAR},
       </if>
       <if test="pickDate != null">
         #{pickDate,jdbcType=DATE},
@@ -181,6 +185,9 @@
       <if test="returnTime != null">
         #{returnTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="regionId != null">
+        #{regionId,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="team.cfc.lostandfound.model.LostItemExample" resultType="java.lang.Long">
@@ -201,8 +208,8 @@
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
-      <if test="record.pickerId != null">
-        picker_id = #{record.pickerId,jdbcType=INTEGER},
+      <if test="record.picker != null">
+        picker = #{record.picker,jdbcType=VARCHAR},
       </if>
       <if test="record.pickDate != null">
         pick_date = #{record.pickDate,jdbcType=DATE},
@@ -225,6 +232,9 @@
       <if test="record.returnTime != null">
         return_time = #{record.returnTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.regionId != null">
+        region_id = #{record.regionId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -235,14 +245,15 @@
     set id = #{record.id,jdbcType=INTEGER},
       `name` = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
-      picker_id = #{record.pickerId,jdbcType=INTEGER},
+      picker = #{record.picker,jdbcType=VARCHAR},
       pick_date = #{record.pickDate,jdbcType=DATE},
       pick_address = #{record.pickAddress,jdbcType=VARCHAR},
       image = #{record.image,jdbcType=VARCHAR},
       `status` = #{record.status,jdbcType=INTEGER},
       owner_name = #{record.ownerName,jdbcType=VARCHAR},
       owner_telephone = #{record.ownerTelephone,jdbcType=VARCHAR},
-      return_time = #{record.returnTime,jdbcType=TIMESTAMP}
+      return_time = #{record.returnTime,jdbcType=TIMESTAMP},
+      region_id = #{record.regionId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -256,8 +267,8 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="pickerId != null">
-        picker_id = #{pickerId,jdbcType=INTEGER},
+      <if test="picker != null">
+        picker = #{picker,jdbcType=VARCHAR},
       </if>
       <if test="pickDate != null">
         pick_date = #{pickDate,jdbcType=DATE},
@@ -280,6 +291,9 @@
       <if test="returnTime != null">
         return_time = #{returnTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="regionId != null">
+        region_id = #{regionId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -287,16 +301,15 @@
     update lost_item
     set `name` = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
-      picker_id = #{pickerId,jdbcType=INTEGER},
+      picker = #{picker,jdbcType=VARCHAR},
       pick_date = #{pickDate,jdbcType=DATE},
       pick_address = #{pickAddress,jdbcType=VARCHAR},
       image = #{image,jdbcType=VARCHAR},
       `status` = #{status,jdbcType=INTEGER},
       owner_name = #{ownerName,jdbcType=VARCHAR},
       owner_telephone = #{ownerTelephone,jdbcType=VARCHAR},
-      return_time = #{returnTime,jdbcType=TIMESTAMP}
+      return_time = #{returnTime,jdbcType=TIMESTAMP},
+      region_id = #{regionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-
 </mapper>

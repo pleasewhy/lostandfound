@@ -4,32 +4,22 @@ import java.io.Serializable;
 import lombok.Data;
 
 /**
- * picker
+ * region
  * @author 
  */
 @Data
-public class Picker implements Serializable {
+public class Region implements Serializable {
     private Integer id;
 
     /**
-     * 姓名
+     * 区域名称
      */
     private String name;
 
     /**
-     * qq号
+     * 0->正常，1->审核失败,2->审核中,默认为2
      */
-    private String qq;
-
-    /**
-     * 电话
-     */
-    private String telephone;
-
-    /**
-     * 微信用户的唯一标识符
-     */
-    private String openId;
+    private Integer status;
 
     private static final long serialVersionUID = 1L;
 }

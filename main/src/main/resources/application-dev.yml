@@ -2,6 +2,12 @@ web:
   upload-path: D:\static\image
   endpoint: http://localhost:8080/lostandfound
 
+logging:
+  file:
+    path: D:/static
+  level:
+    root: info
+
 spring:
   mvc:
     static-path-pattern: /**  # 静态文件的匹配
