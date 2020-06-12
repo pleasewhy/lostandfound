@@ -5,7 +5,7 @@ server:
 
 spring:
   profiles:
-    active: dev #默认为开发环境
+    active: prod #默认为开发环境
   servlet:
     multipart:
       max-file-size: 10MB  # 文件大小限制为10MB

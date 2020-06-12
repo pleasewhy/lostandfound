@@ -287,7 +287,9 @@ public class WxUserController {
     @GetMapping("/acceptApplyManager")
     public CommonResult acceptApplyManager(@RequestParam("id") int applyRecordId) {
         ApplyManagerMsg msg = applyManagerMsgService.selectByPrimaryKey(applyRecordId);
-        msg.setStatus(ApplyManagerMsgService.FAILED);
+        msg.setStatus(ApplyManagerMsgService.SUCCESS);
+        Region region = regionService.getRegionByPrimaryKey(msg.getRegionId());
+        regionService.addRegionManager(region.getId(),msg.getWxUserId());
         applyManagerMsgService.updateApplyManagerMsg(msg);
         return CommonResult.success("", "操作成功");
     }

@@ -1,5 +1,5 @@
 web:
-  upload-path: /root/static/image
+  upload-path: /srv/lostandfound/static/image
   endpoint: https://cfc.colinx.xyz:5555/lostandfound
 
 spring:
@@ -16,6 +16,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 logging:
   file:
-    path: /root/lostandfound/log/
+    path: /srv/lostandfound/log/
   level:
     root: info
