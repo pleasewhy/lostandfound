@@ -32,5 +32,10 @@ public class WxUser implements Serializable {
      */
     private Date createTime;
 
+    /**
+     * 用户选择的区域
+     */
+    private Integer selectRegionId;
+
     private static final long serialVersionUID = 1L;
 }

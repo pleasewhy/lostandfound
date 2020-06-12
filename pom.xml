@@ -30,7 +30,6 @@
         <hutool.version>4.5.7</hutool.version>
     </properties>
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -50,6 +49,11 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.1</version>
         </dependency>
+<!--        aop依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
         <!--        redis依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -62,6 +66,7 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>2.2.2.RELEASE</version>
         </dependency>
+<!--        mysql连接驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -99,7 +104,6 @@
             <artifactId>pagehelper</artifactId>
             <version>${pagehelper.version}</version>
         </dependency>
-        <!--    java 连接mysql驱动-->
         <!--    jwt-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -111,6 +115,21 @@
             <groupId>com.github.liyiorg</groupId>
             <artifactId>weixin-popular</artifactId>
             <version>2.8.5</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+<!--        图片压缩-->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.11</version>
+        </dependency>
+
+        <!--        时间工具类-->
+        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.9.9</version>
         </dependency>
     </dependencies>
 

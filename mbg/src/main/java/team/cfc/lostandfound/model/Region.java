@@ -17,9 +17,14 @@ public class Region implements Serializable {
     private String name;
 
     /**
-     * 0->正常，1->审核失败,2->审核中,默认为2
+     * 0->已被创建，1->未被创建
      */
     private Integer status;
+
+    /**
+     * 区域的失物招领中心
+     */
+    private String receiveLocation;
 
     private static final long serialVersionUID = 1L;
 }

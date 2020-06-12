@@ -1,6 +1,6 @@
 web:
   upload-path: /root/static/image
-  endpoint: http://116.62.186.144/lostandfound
+  endpoint: https://cfc.colinx.xyz:5555/lostandfound
 
 spring:
   mvc:
@@ -8,3 +8,14 @@ spring:
   resources:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,\
       classpath:/static/,classpath:/public/,file:${web.upload-path}  # 静态文件的查找路径
+  datasource:
+    url: jdbc:mysql://localhost:3306/lost_found?useUnicode=true&characterEncoding=utf-8&charset=utf8mb4&
+      serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+logging:
+  file:
+    path: /root/lostandfound/log/
+  level:
+    root: info

@@ -23,7 +23,6 @@ public class EmailServiceImpl implements EmailService {
         message.setTo(emailAddr);
         message.setSubject(subject);
         message.setText(msg);
-        System.out.println(javaMailSender);
         javaMailSender.send(message);
     }
 }

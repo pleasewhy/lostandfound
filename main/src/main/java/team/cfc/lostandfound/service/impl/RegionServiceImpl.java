@@ -1,25 +1,23 @@
 package team.cfc.lostandfound.service.impl;
 
-import cn.hutool.core.date.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import team.cfc.lostandfound.common.api.CommonResult;
+import org.springframework.transaction.annotation.Transactional;
 import team.cfc.lostandfound.dao.*;
 import team.cfc.lostandfound.dto.RegionDto;
+import team.cfc.lostandfound.dto.WxUserDto;
 import team.cfc.lostandfound.model.*;
+import team.cfc.lostandfound.service.LostItemService;
+import team.cfc.lostandfound.service.RedisService;
 import team.cfc.lostandfound.service.RegionService;
 import team.cfc.lostandfound.service.WxUserService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -47,81 +45,186 @@ public class RegionServiceImpl implements RegionService {
     @Autowired
     WxUserService wxUserService;
 
+    @Autowired
+    RedisService redisService;
 
-    private RegionDto getRegionDto(Region region) {
+    @Autowired
+    WxUserInfoDao wxUserInfoDao;
+
+    @Autowired
+    ApplyLostMsgDao applyLostMsgDao;
+
+    @Value("${redis.key.prefix.inviteCode}")
+    String REDIS_KEY_PREFIX_INVITE_CODE;
+
+    @Value("${redis.key.expire.inviteCode}")
+    Long INVITE_CODE_EXPIRE_SECONDS;
+
+
+    @Override
+    public List<RegionDto> getAllRegion(int status) {
+        RegionExample example = new RegionExample();
+        if (status != 2) {
+            example.createCriteria().andStatusEqualTo(status);
+        }
+        List<Region> regionList = regionDao.selectByExample(example);
+        List<RegionDto> regionDtoList = new ArrayList<>();
+        for (Region region : regionList) {
+            regionDtoList.add(convert(region));
+        }
+        return regionDtoList;
+    }
+
+
+    @Override
+    public Region getRegionByPrimaryKey(int id) {
+        return regionDao.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<WxUser> getRegionManager(int regionId) {
+        RegionManagerRelationExample example = new RegionManagerRelationExample();
+        example.createCriteria().andRegionIdEqualTo(regionId);
+        List<RegionManagerRelation> regionManagerRelations = managerRelationDao.selectByExample(example);
+        List<WxUser> wxUsers = new ArrayList<>();
+        for (RegionManagerRelation relation : regionManagerRelations) {
+            wxUsers.add(wxUserService.getWxUserByPrimaryKey(relation.getWxUserId()));
+        }
+        return wxUsers;
+    }
+
+    @Override
+    public WxUser getRegionCreator(int regionId) {
+        RegionCreateRelationExample example = new RegionCreateRelationExample();
+        example.createCriteria().andRegionIdEqualTo(regionId);
+        List<RegionCreateRelation> regionCreateRelations = createRelationDao.selectByExample(example);
+        return wxUserService.getWxUserByPrimaryKey(regionCreateRelations.get(0).getWxUserId());
+    }
+
+
+    @Override
+    public RegionDto convert(Region region) {
         int regionId = region.getId();
         RegionDto regionDto = new RegionDto();
         regionDto.setName(region.getName());
-        RegionCreateRelationExample createExample = new RegionCreateRelationExample();
-        createExample.createCriteria().andRegionIdEqualTo(regionId);
-        List<RegionCreateRelation> createRelations = createRelationDao.selectByExample(createExample);
-        regionDto.setCreateUserId(createRelations.get(0).getWxUserId());
-        regionDto.setManagerId(new ArrayList<>());
-        RegionManagerRelationExample example = new RegionManagerRelationExample();
-        example.createCriteria().andRegionIdEqualTo(regionId);
-        List<RegionManagerRelation> relations = managerRelationDao.selectByExample(example);
-        if (relations == null || relations.size() < 1) {
+        regionDto.setId(regionId);
+        if (region.getStatus() != 0) {
             return regionDto;
         }
-        List<Integer> mangers = regionDto.getManagerId();
-        for (RegionManagerRelation relation : relations) {
-            int wxUserId = relation.getWxUserId();
-            mangers.add(wxUserId);
+        regionDto.setReceiveLocation(region.getReceiveLocation());
+        WxUser creator = getRegionCreator(regionId);
+
+        WxUserDto creatorDto = wxUserService.getWxUserDto(creator);
+
+        regionDto.setCreator(creatorDto);
+        List<WxUser> mangers = getRegionManager(regionId);
+        regionDto.setManager(new ArrayList<>());
+        for (WxUser wxUser : mangers) {
+            regionDto.getManager().add(wxUserService.getWxUserDto(wxUser));
         }
         return regionDto;
     }
 
     @Override
-    public List<RegionDto> getAllRegion() {
-        RegionExample example = new RegionExample();
-        List<Region> regionList = regionDao.selectByExample(example);
-        List<RegionDto> regionDtoList = new ArrayList<>();
-        for (Region region : regionList) {
-            regionDtoList.add(getRegionDto(region));
+    public List<RegionDto> convert(List<Region> regions) {
+        List<RegionDto> res = new ArrayList<>();
+        for (Region region : regions) {
+            res.add(convert(region));
         }
-        return regionDtoList;
+        return res;
     }
 
     @Override
-    public CommonResult createRegion(int regionId, String username) {
-        WxUser wxUser = wxUserService.getWxUserByOpenId(username);
-        int wxUserId = wxUser.getId();
-        long timestamp = System.currentTimeMillis();
-        timestamp = timestamp - timestamp % (24 * 60 * 60 * 1000) - 8 * 60 * 60 * 1000;
-        DateTime today = new DateTime(timestamp);
-        ApplyRegionMsgExample msgExample = new ApplyRegionMsgExample();
-        msgExample.createCriteria().andApplyTimeGreaterThanOrEqualTo(new DateTime(timestamp))
-                .andWxUserIdEqualTo(wxUserId);
-        long todayCount = applyRegionMsgDao.countByExample(msgExample);
-        if (todayCount > 1) {
-            return CommonResult.failed("每日仅可申请一次");
+    public String generateCreateInviteCode(Region region) throws RuntimeException {
+        if (region.getStatus() == 0) {
+            throw new RuntimeException("该区域已被创建");
         }
-        ApplyRegionMsg msg = new ApplyRegionMsg();
-        msg.setApplyTime(new DateTime());
-        msg.setRegionId(regionId);
-        msg.setWxUserId(wxUserId);
-        applyRegionMsgDao.insertSelective(msg);
-        return CommonResult.success("申请成功");
+        String lastCode = redisService.get(REDIS_KEY_PREFIX_INVITE_CODE + region.toString());
+        if (lastCode != null) {
+            return lastCode;
+        }
+        StringBuilder sb = new StringBuilder();
+        Random random = new Random();
+        while (true) {
+            for (int i = 0; i < 6; ++i) {
+                int randNum = random.nextInt(10);
+                sb.append(randNum);
+            }
+            String res = redisService.get(REDIS_KEY_PREFIX_INVITE_CODE + sb.toString());
+            if (res == null) {
+                break;
+            }
+        }
+        String code = sb.toString();
+        redisService.set(REDIS_KEY_PREFIX_INVITE_CODE + code, region.getId().toString());
+        redisService.set(REDIS_KEY_PREFIX_INVITE_CODE + region.toString(), code);
+        redisService.expire(REDIS_KEY_PREFIX_INVITE_CODE + code, INVITE_CODE_EXPIRE_SECONDS);
+        redisService.expire(REDIS_KEY_PREFIX_INVITE_CODE + region.toString(), INVITE_CODE_EXPIRE_SECONDS);
+        return code;
     }
 
     @Override
-    public CommonResult applyRegionManager(int regionId, String username) {
-        Region region = regionDao.selectByPrimaryKey(regionId);
-        if (region.getStatus() == 1) {
-            return CommonResult.failed("该区域未被创建");
+    public Region verifyInviteCode(String code) throws Exception {
+        try {
+            int regionId = Integer.parseInt(redisService.get(REDIS_KEY_PREFIX_INVITE_CODE + code));
+            removeInviteCode(code, getRegionByPrimaryKey(regionId));
+            return getRegionByPrimaryKey(regionId);
+        } catch (Exception e) {
+            throw new Exception("邀请码错误");
         }
-        RegionManagerRelationExample example = new RegionManagerRelationExample();
-        example.createCriteria().andRegionIdEqualTo(regionId);
-        long count = managerRelationDao.countByExample(example);
-        if (count >= 2) {
-            return CommonResult.failed("该区域管理员已达上限");
-        }
-        int wxUserId = wxUserService.getWxUserByOpenId(username).getId();
-        ApplyManagerMsg applyManagerMsg = new ApplyManagerMsg();
-        applyManagerMsg.setRegionId(regionId);
-        applyManagerMsg.setRegionId(wxUserId);
-        applyManagerMsgDao.insertSelective(applyManagerMsg);
-        return CommonResult.success("等待管理员审核");
     }
 
+    @Override
+    public void removeInviteCode(String code, Region region) {
+        redisService.remove(REDIS_KEY_PREFIX_INVITE_CODE + code);
+        redisService.remove(REDIS_KEY_PREFIX_INVITE_CODE + region.toString());
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void setRegionCreator(Region region, WxUser wxUser) throws Exception {
+        if (region.getStatus() == 0) {
+            throw new Exception("该区域已被创建");
+        }
+        RegionCreateRelationExample example = new RegionCreateRelationExample();
+        example.createCriteria().andRegionIdEqualTo(region.getId());
+        long count = createRelationDao.countByExample(example);
+        if (count > 0) {
+            throw new Exception("该区域已被创建");
+        }
+        Region createRegion = wxUserService.getCreateRegion(wxUser);
+        if (createRegion != null) {
+            throw new Exception("每个用户只能创建一个区域");
+        }
+        region.setStatus(LostItemService.CHECKING);
+        regionDao.updateByPrimaryKeySelective(region);
+        RegionCreateRelation relation = new RegionCreateRelation();
+        relation.setWxUserId(wxUser.getId());
+        relation.setRegionId(region.getId());
+        createRelationDao.insertSelective(relation);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int addRegionManager(int regionId, int wxUserId) {
+        RegionManagerRelation relation = new RegionManagerRelation();
+        relation.setWxUserId(wxUserId);
+        relation.setRegionId(regionId);
+        return managerRelationDao.insertSelective(relation);
+    }
+
+
+    public List<ApplyLostMsg> applyLostMsg(Region region) {
+        ApplyLostMsgExample example = new ApplyLostMsgExample();
+        example.createCriteria().andRegionIdEqualTo(region.getId());
+        List<ApplyLostMsg> msgs = applyLostMsgDao.selectByExample(example);
+        return msgs;
+    }
+
+    @Override
+    public int addRegion(String regionName) {
+        Region region = new Region();
+        region.setName(regionName);
+        return regionDao.insertSelective(region);
+    }
 }

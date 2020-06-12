@@ -3,34 +3,53 @@ package team.cfc.lostandfound.dto;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 
-@ApiModel(value = "lostItemDto",description = "上传丢失物品的对象")
+@ApiModel(value = "lostItemDto", description = "上传丢失物品的对象")
 @Data
-public class LostItemDto {
-    private Integer id;
-    /**
-     * 丢失物名称(非空)
-     */
-    @NotNull
-    private String name;
+public class LostItemDto implements Serializable {
 
     /**
-     * 丢失物描述
+     * 物品id
+     */
+    private int articleId;
+
+    /**
+     * 物品创建时间
+     */
+    private String submitTime;
+
+    /**
+     * 丢失物所属区域
+     */
+    private int regionId;
+
+    /**
+     * 丢失物品图片描述url
+     */
+    private String imageUrl;
+
+    /**
+     * 丢失物文字描述
      */
     private String description;
 
     /**
-     * 拾取人信息
+     * 标签
      */
-    private String pickerId;
+    private String label;
 
     /**
-     * 拾取日期
+     * 拾取人
      */
-    private Date pickDate;
+    private int pickerId;
+
+    /**
+     * 拾取时间
+     */
+    private String pickTime;
 
     /**
      * 拾取地点
@@ -38,28 +57,31 @@ public class LostItemDto {
     private String pickAddress;
 
     /**
-     * 物品图片url
+     * 联系方式
      */
-    private String image;
+    private String recoverDetails;
 
     /**
-     * 0->未归还, 1->归还
+     * 暂存地点
      */
-    private Integer status;
+    private String receiveLocation;
 
     /**
-     * 失主姓名
+     * recoverDetails的用途
+     * 0->暂存地点，1->联系方式
      */
-    private String ownerName;
+    private int recoverMethod;
 
     /**
-     * 失主电话
+     * 用户昵称
      */
-    private String ownerTelephone;
+    private String nickName;
 
     /**
-     * 归还时间
+     * 用户头像
      */
-    private Date returnTime;
+    private String avatarUrl;
 
+
+    private static final long serialVersionUID = 1L;
 }

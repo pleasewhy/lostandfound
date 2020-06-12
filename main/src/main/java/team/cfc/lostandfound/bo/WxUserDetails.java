@@ -12,7 +12,7 @@ import java.util.Collections;
 public class WxUserDetails implements UserDetails {
 
     private WxUser wxUser;
-    private GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("WxUser");
+    private GrantedAuthority grantedAuthority = new SimpleGrantedAuthority("wxUser");
 
     public WxUserDetails(WxUser wxUser){
         this.wxUser = wxUser;

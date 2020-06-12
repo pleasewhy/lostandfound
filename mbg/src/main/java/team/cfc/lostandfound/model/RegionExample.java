@@ -293,6 +293,76 @@ public class RegionExample {
             addCriterion("`status` not between", value1, value2, "status");
             return (Criteria) this;
         }
+
+        public Criteria andReceiveLocationIsNull() {
+            addCriterion("receive_location is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationIsNotNull() {
+            addCriterion("receive_location is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationEqualTo(String value) {
+            addCriterion("receive_location =", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationNotEqualTo(String value) {
+            addCriterion("receive_location <>", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationGreaterThan(String value) {
+            addCriterion("receive_location >", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationGreaterThanOrEqualTo(String value) {
+            addCriterion("receive_location >=", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationLessThan(String value) {
+            addCriterion("receive_location <", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationLessThanOrEqualTo(String value) {
+            addCriterion("receive_location <=", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationLike(String value) {
+            addCriterion("receive_location like", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationNotLike(String value) {
+            addCriterion("receive_location not like", value, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationIn(List<String> values) {
+            addCriterion("receive_location in", values, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationNotIn(List<String> values) {
+            addCriterion("receive_location not in", values, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationBetween(String value1, String value2) {
+            addCriterion("receive_location between", value1, value2, "receiveLocation");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveLocationNotBetween(String value1, String value2) {
+            addCriterion("receive_location not between", value1, value2, "receiveLocation");
+            return (Criteria) this;
+        }
     }
 
     /**

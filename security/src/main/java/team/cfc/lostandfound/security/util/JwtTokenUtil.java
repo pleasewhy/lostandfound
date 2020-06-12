@@ -3,6 +3,7 @@ package team.cfc.lostandfound.security.util;
 import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.StrUtil;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.slf4j.Logger;
@@ -48,6 +49,8 @@ public class JwtTokenUtil {
                     .setSigningKey(secret)
                     .parseClaimsJws(token)
                     .getBody();
+        } catch (ExpiredJwtException expiredJwtException) {
+            LOGGER.info("token过期");
         } catch (Exception e) {
             LOGGER.info("JWT格式验证失败:{}", token);
         }

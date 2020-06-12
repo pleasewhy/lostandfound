@@ -7,6 +7,7 @@
     <result column="session_key" jdbcType="VARCHAR" property="sessionKey" />
     <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="select_region_id" jdbcType="INTEGER" property="selectRegionId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, open_id, session_key, modify_time, create_time
+    id, open_id, session_key, modify_time, create_time, select_region_id
   </sql>
   <select id="selectByExample" parameterType="team.cfc.lostandfound.model.WxUserExample" resultMap="BaseResultMap">
     select
@@ -101,9 +102,9 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.WxUser" useGeneratedKeys="true">
     insert into wx_user (open_id, session_key, modify_time, 
-      create_time)
+      create_time, select_region_id)
     values (#{openId,jdbcType=VARCHAR}, #{sessionKey,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP})
+      #{createTime,jdbcType=TIMESTAMP}, #{selectRegionId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.WxUser" useGeneratedKeys="true">
     insert into wx_user
@@ -120,6 +121,9 @@
       <if test="createTime != null">
         create_time,
       </if>
+      <if test="selectRegionId != null">
+        select_region_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="openId != null">
@@ -133,6 +137,9 @@
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="selectRegionId != null">
+        #{selectRegionId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -160,6 +167,9 @@
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.selectRegionId != null">
+        select_region_id = #{record.selectRegionId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -171,7 +181,8 @@
       open_id = #{record.openId,jdbcType=VARCHAR},
       session_key = #{record.sessionKey,jdbcType=VARCHAR},
       modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      select_region_id = #{record.selectRegionId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -191,6 +202,9 @@
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="selectRegionId != null">
+        select_region_id = #{selectRegionId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -199,7 +213,8 @@
     set open_id = #{openId,jdbcType=VARCHAR},
       session_key = #{sessionKey,jdbcType=VARCHAR},
       modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      select_region_id = #{selectRegionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

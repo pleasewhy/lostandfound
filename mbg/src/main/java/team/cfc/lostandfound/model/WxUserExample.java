@@ -424,6 +424,66 @@ public class WxUserExample {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
+
+        public Criteria andSelectRegionIdIsNull() {
+            addCriterion("select_region_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdIsNotNull() {
+            addCriterion("select_region_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdEqualTo(Integer value) {
+            addCriterion("select_region_id =", value, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdNotEqualTo(Integer value) {
+            addCriterion("select_region_id <>", value, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdGreaterThan(Integer value) {
+            addCriterion("select_region_id >", value, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("select_region_id >=", value, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdLessThan(Integer value) {
+            addCriterion("select_region_id <", value, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("select_region_id <=", value, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdIn(List<Integer> values) {
+            addCriterion("select_region_id in", values, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdNotIn(List<Integer> values) {
+            addCriterion("select_region_id not in", values, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdBetween(Integer value1, Integer value2) {
+            addCriterion("select_region_id between", value1, value2, "selectRegionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andSelectRegionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("select_region_id not between", value1, value2, "selectRegionId");
+            return (Criteria) this;
+        }
     }
 
     /**

@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="receive_location" jdbcType="VARCHAR" property="receiveLocation" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, `status`
+    id, `name`, `status`, receive_location
   </sql>
   <select id="selectByExample" parameterType="team.cfc.lostandfound.model.RegionExample" resultMap="BaseResultMap">
     select
@@ -98,8 +99,10 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.Region" useGeneratedKeys="true">
-    insert into region (`name`, `status`)
-    values (#{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
+    insert into region (`name`, `status`, receive_location
+      )
+    values (#{name,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{receiveLocation,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.Region" useGeneratedKeys="true">
     insert into region
@@ -110,6 +113,9 @@
       <if test="status != null">
         `status`,
       </if>
+      <if test="receiveLocation != null">
+        receive_location,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -117,6 +123,9 @@
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
+      </if>
+      <if test="receiveLocation != null">
+        #{receiveLocation,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -138,6 +147,9 @@
       <if test="record.status != null">
         `status` = #{record.status,jdbcType=INTEGER},
       </if>
+      <if test="record.receiveLocation != null">
+        receive_location = #{record.receiveLocation,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -147,7 +159,8 @@
     update region
     set id = #{record.id,jdbcType=INTEGER},
       `name` = #{record.name,jdbcType=VARCHAR},
-      `status` = #{record.status,jdbcType=INTEGER}
+      `status` = #{record.status,jdbcType=INTEGER},
+      receive_location = #{record.receiveLocation,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -161,13 +174,17 @@
       <if test="status != null">
         `status` = #{status,jdbcType=INTEGER},
       </if>
+      <if test="receiveLocation != null">
+        receive_location = #{receiveLocation,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="team.cfc.lostandfound.model.Region">
     update region
     set `name` = #{name,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=INTEGER}
+      `status` = #{status,jdbcType=INTEGER},
+      receive_location = #{receiveLocation,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

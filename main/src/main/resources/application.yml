@@ -1,24 +1,37 @@
 server:
   servlet:
     context-path: /lostandfound
+  port: 8080
+
+spring:
+  profiles:
+    active: dev #默认为开发环境
+  servlet:
+    multipart:
+      max-file-size: 10MB  # 文件大小限制为10MB
 jwt:
   tokenHeader: Authorization
   secret: lostandfound-secret
   expiration: 604800
   tokenHead: Bearer
 
-spring:
-  profiles:
-    active: prod #默认为开发环境
-  servlet:
-    multipart:
-      max-file-size: 10MB  # 文件大小限制为10MB
-  datasource:
-    url: jdbc:mysql://localhost:3306/lost_found?useUnicode=true&characterEncoding=utf-8&charset=utf8mb4&
-      serverTimezone=Asia/Shanghai
-    username: root
-    password: 123456
-    driver-class-name: com.mysql.cj.jdbc.Driver
+
+list:
+  timeOfDay:
+    - 早间
+    - 第一节课
+    - 第二节课
+    - 第三节课
+    - 第四节课
+    - 午间
+    - 第五节课
+    - 第六节课
+    - 第七节课
+    - 第八节课
+    - 晚间
+    - 第九节课
+    - 第十节课
+
 source:
   ignored:
     urls:
@@ -31,10 +44,19 @@ source:
       - /**/*.ico
       - /**/*.mp4
       - /actuator/**
+      - /searchTest
 
 mybatis:
   mapper-locations:
     - classpath*:/team/cfc/lostandfound/mapper/*.xml
+
+#logging:
+#  level:
+#    team:
+#      cfc:
+#        lostandfound:
+#          dao:
+#            debug
 
 
 spring.mail.host: smtp.qq.com
@@ -47,7 +69,7 @@ spring.mail.properties.mail.debug: true
 redis:
   key:
     prefix:
-      authCode: "portal:authCode:"
+      inviteCode: "region:invite:code"
     expire:
-      authCode: 120 # 验证码超期时间sudo
+      inviteCode: 86400 # (24小时)验证码超期时间(秒)
 

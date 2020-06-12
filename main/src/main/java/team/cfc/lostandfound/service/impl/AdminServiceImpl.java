@@ -19,8 +19,9 @@ import team.cfc.lostandfound.dto.ApplyRegionDto;
 import team.cfc.lostandfound.model.*;
 import team.cfc.lostandfound.security.util.JwtTokenUtil;
 import team.cfc.lostandfound.service.AdminService;
+import team.cfc.lostandfound.service.RegionService;
+import team.cfc.lostandfound.service.WxUserService;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,19 +35,20 @@ public class AdminServiceImpl implements AdminService {
     AdminDao adminDao;
 
     @Autowired
-    RegionDao regionDao;
+    RegionService regionService;
 
     @Autowired
-    WxUserDao wxUserDao;
-
-    @Autowired
-    ApplyRegionMsgDao applyDao;
+    ApplyRegionMsgDao applyRegionDao;
 
     @Autowired
     PasswordEncoder passwordEncoder;
 
     @Autowired
+    WxUserService wxUserService;
+
+    @Autowired
     JwtTokenUtil jwtTokenUtil;
+
 
 
     @Value("${jwt.tokenHead}")
@@ -77,12 +79,11 @@ public class AdminServiceImpl implements AdminService {
         //密码需要客户端加密后传递
         try {
             UserDetails userDetails = this.loadUserByUsername(username);
-            if (!passwordEncoder.matches(password, userDetails.getPassword())) {
-                throw new BadCredentialsException("密码不正确");
+            if (userDetails==null||!passwordEncoder.matches(password, userDetails.getPassword())) {
+                throw new BadCredentialsException("用户名或者密码不正确");
             }
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            System.out.println("\n\n" + authentication + "\n\n");
             token = jwtTokenUtil.generateToken(userDetails);
 //            updateLoginTimeByUsername(username);
 //            insertLoginLog(username);
@@ -92,32 +93,40 @@ public class AdminServiceImpl implements AdminService {
         }
         token = tokenHead + " " + token;
         Map<String, String> map = new HashMap<>();
-        map.put("toekn", token);
+        map.put("token", token);
         return CommonResult.success(map);
     }
 
-    public ApplyRegionDto getApplyRegionDto(ApplyRegionMsg msg) {
+    @Override
+    public CommonResult acceptApplyRegion(String username, int regionId) {
+        WxUser wxUser = wxUserService.getWxUserByOpenId(username);
+        return null;
+    }
+
+
+    ApplyRegionDto getApplyRegionDto(ApplyRegionMsg applyRegionMsg){
         ApplyRegionDto applyRegionDto = new ApplyRegionDto();
-        int regionId = msg.getRegionId();
-        RegionExample regionExample = new RegionExample();
-        regionExample.createCriteria().andIdEqualTo(regionId);
-        List<Region> regions = regionDao.selectByExample(regionExample);
-        applyRegionDto.setRegionName(regions.get(0).getName());
-        WxUser wxUser = wxUserDao.selectByPrimaryKey(msg.getWxUserId());
-        applyRegionDto.setApplyWxUser(wxUser);
+        applyRegionDto.setApplyTime(applyRegionMsg.getApplyTime());
+        applyRegionDto.setId(applyRegionMsg.getId());
+        Region region = regionService.getRegionByPrimaryKey(applyRegionMsg.getRegionId());
+        applyRegionDto.setRegionName(region.getName());
+        WxUser wxUser = wxUserService.getWxUserByPrimaryKey(applyRegionMsg.getWxUserId());
+        applyRegionDto.setApplyWxUser(wxUserService.getWxUserDto(wxUser));
         return applyRegionDto;
     }
 
+
+    @Override
     public List<ApplyRegionDto> getApplyRegionMsg(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         ApplyRegionMsgExample example = new ApplyRegionMsgExample();
         example.createCriteria().andStatusEqualTo(0);
-        List<ApplyRegionMsg> messages = applyDao.selectByExample(example);
+        List<ApplyRegionMsg> messages = applyRegionDao.selectByExample(example);
         List<ApplyRegionDto> applyRegionDtos = new ArrayList<>();
         for (ApplyRegionMsg m : messages) {
             applyRegionDtos.add(getApplyRegionDto(m));
         }
-
         return applyRegionDtos;
     }
+
 }

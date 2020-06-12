@@ -1,6 +1,8 @@
 package team.cfc.lostandfound.config;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,6 +23,7 @@ import team.cfc.lostandfound.service.WxUserService;
 @EnableGlobalMethodSecurity(prePostEnabled=true)
 public class LostAndFoundSecurityConfig extends SecurityConfig {
 
+    public static final Logger LOGGER = LoggerFactory.getLogger(LostAndFoundSecurityConfig.class);
     @Autowired
     WxUserService wxUserService;
 
@@ -39,7 +42,8 @@ public class LostAndFoundSecurityConfig extends SecurityConfig {
             if (wxUserDetails!=null){
                 return wxUserDetails;
             }
-            throw new UsernameNotFoundException("用户名或者密码错误");
+            LOGGER.info("用户不存在{}",username);
+            return null;
         };
     }
 }

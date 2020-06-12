@@ -1,22 +1,19 @@
 package team.cfc.lostandfound.common.api;
 
+import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Paths;
 
 public class SomeUtils {
     public static void saveImage(MultipartFile imageFile, String imageLocation) throws IOException {
-        FileInputStream fileInputStream = (FileInputStream) imageFile.getInputStream();
-        BufferedOutputStream bufferedOutputStream =
-                                            new BufferedOutputStream(
-                                                    new FileOutputStream(imageLocation)
-                                            );
-        byte[] bs = new byte[1024*1024*15];
-        int len;
-        while ((len = fileInputStream.read(bs)) != -1) {
-            bufferedOutputStream.write(bs, 0, len);
-        }
-        bufferedOutputStream.flush();
-        bufferedOutputStream.close();
+        imageFile.transferTo(Paths.get(imageLocation));
+//        FileInputStream fileInputStream = (FileInputStream) imageFile.getInputStream();
+//        FileWriter fileWriter = new FileWriter(imageLocation);
+//        fileWriter.write();
+//        Thumbnails.of(fileInputStream).size(720,1080).outputFormat("jpg").toFile(imageLocation);
     }
 }

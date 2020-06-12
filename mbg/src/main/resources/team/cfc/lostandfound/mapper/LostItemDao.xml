@@ -3,17 +3,18 @@
 <mapper namespace="team.cfc.lostandfound.dao.LostItemDao">
   <resultMap id="BaseResultMap" type="team.cfc.lostandfound.model.LostItem">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="picker" jdbcType="VARCHAR" property="picker" />
-    <result column="pick_date" jdbcType="DATE" property="pickDate" />
+    <result column="picker_id" jdbcType="INTEGER" property="pickerId" />
+    <result column="pick_time" jdbcType="VARCHAR" property="pickTime" />
     <result column="pick_address" jdbcType="VARCHAR" property="pickAddress" />
-    <result column="image" jdbcType="VARCHAR" property="image" />
-    <result column="status" jdbcType="INTEGER" property="status" />
-    <result column="owner_name" jdbcType="VARCHAR" property="ownerName" />
-    <result column="owner_telephone" jdbcType="VARCHAR" property="ownerTelephone" />
-    <result column="return_time" jdbcType="TIMESTAMP" property="returnTime" />
+    <result column="image_url" jdbcType="VARCHAR" property="imageUrl" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
     <result column="region_id" jdbcType="INTEGER" property="regionId" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="submit_time" jdbcType="TIMESTAMP" property="submitTime" />
+    <result column="recover_method" jdbcType="INTEGER" property="recoverMethod" />
+    <result column="recover_details" jdbcType="VARCHAR" property="recoverDetails" />
+    <result column="receive_location" jdbcType="VARCHAR" property="receiveLocation" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,8 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, `name`, description, picker, pick_date, pick_address, image, `status`, owner_name, 
-    owner_telephone, return_time, region_id
+    id, description, picker_id, pick_time, pick_address, image_url, `label`, region_id, 
+    `status`, submit_time, recover_method, recover_details, receive_location
   </sql>
   <select id="selectByExample" parameterType="team.cfc.lostandfound.model.LostItemExample" resultMap="BaseResultMap">
     select
@@ -108,85 +109,93 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.LostItem" useGeneratedKeys="true">
-    insert into lost_item (`name`, description, picker, 
-      pick_date, pick_address, image, 
-      `status`, owner_name, owner_telephone, 
-      return_time, region_id)
-    values (#{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{picker,jdbcType=VARCHAR}, 
-      #{pickDate,jdbcType=DATE}, #{pickAddress,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{ownerName,jdbcType=VARCHAR}, #{ownerTelephone,jdbcType=VARCHAR}, 
-      #{returnTime,jdbcType=TIMESTAMP}, #{regionId,jdbcType=INTEGER})
+    insert into lost_item (description, picker_id, pick_time, 
+      pick_address, image_url, `label`, 
+      region_id, `status`, submit_time, 
+      recover_method, recover_details, receive_location
+      )
+    values (#{description,jdbcType=VARCHAR}, #{pickerId,jdbcType=INTEGER}, #{pickTime,jdbcType=VARCHAR}, 
+      #{pickAddress,jdbcType=VARCHAR}, #{imageUrl,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, 
+      #{regionId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{submitTime,jdbcType=TIMESTAMP}, 
+      #{recoverMethod,jdbcType=INTEGER}, #{recoverDetails,jdbcType=VARCHAR}, #{receiveLocation,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="team.cfc.lostandfound.model.LostItem" useGeneratedKeys="true">
     insert into lost_item
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        `name`,
-      </if>
       <if test="description != null">
         description,
       </if>
-      <if test="picker != null">
-        picker,
+      <if test="pickerId != null">
+        picker_id,
       </if>
-      <if test="pickDate != null">
-        pick_date,
+      <if test="pickTime != null">
+        pick_time,
       </if>
       <if test="pickAddress != null">
         pick_address,
       </if>
-      <if test="image != null">
-        image,
+      <if test="imageUrl != null">
+        image_url,
       </if>
-      <if test="status != null">
-        `status`,
-      </if>
-      <if test="ownerName != null">
-        owner_name,
-      </if>
-      <if test="ownerTelephone != null">
-        owner_telephone,
-      </if>
-      <if test="returnTime != null">
-        return_time,
+      <if test="label != null">
+        `label`,
       </if>
       <if test="regionId != null">
         region_id,
       </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="submitTime != null">
+        submit_time,
+      </if>
+      <if test="recoverMethod != null">
+        recover_method,
+      </if>
+      <if test="recoverDetails != null">
+        recover_details,
+      </if>
+      <if test="receiveLocation != null">
+        receive_location,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="picker != null">
-        #{picker,jdbcType=VARCHAR},
+      <if test="pickerId != null">
+        #{pickerId,jdbcType=INTEGER},
       </if>
-      <if test="pickDate != null">
-        #{pickDate,jdbcType=DATE},
+      <if test="pickTime != null">
+        #{pickTime,jdbcType=VARCHAR},
       </if>
       <if test="pickAddress != null">
         #{pickAddress,jdbcType=VARCHAR},
       </if>
-      <if test="image != null">
-        #{image,jdbcType=VARCHAR},
+      <if test="imageUrl != null">
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null">
+        #{regionId,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
       </if>
-      <if test="ownerName != null">
-        #{ownerName,jdbcType=VARCHAR},
+      <if test="submitTime != null">
+        #{submitTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="ownerTelephone != null">
-        #{ownerTelephone,jdbcType=VARCHAR},
+      <if test="recoverMethod != null">
+        #{recoverMethod,jdbcType=INTEGER},
       </if>
-      <if test="returnTime != null">
-        #{returnTime,jdbcType=TIMESTAMP},
+      <if test="recoverDetails != null">
+        #{recoverDetails,jdbcType=VARCHAR},
       </if>
-      <if test="regionId != null">
-        #{regionId,jdbcType=INTEGER},
+      <if test="receiveLocation != null">
+        #{receiveLocation,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -202,38 +211,41 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.name != null">
-        `name` = #{record.name,jdbcType=VARCHAR},
-      </if>
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
-      <if test="record.picker != null">
-        picker = #{record.picker,jdbcType=VARCHAR},
+      <if test="record.pickerId != null">
+        picker_id = #{record.pickerId,jdbcType=INTEGER},
       </if>
-      <if test="record.pickDate != null">
-        pick_date = #{record.pickDate,jdbcType=DATE},
+      <if test="record.pickTime != null">
+        pick_time = #{record.pickTime,jdbcType=VARCHAR},
       </if>
       <if test="record.pickAddress != null">
         pick_address = #{record.pickAddress,jdbcType=VARCHAR},
       </if>
-      <if test="record.image != null">
-        image = #{record.image,jdbcType=VARCHAR},
+      <if test="record.imageUrl != null">
+        image_url = #{record.imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.label != null">
+        `label` = #{record.label,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regionId != null">
+        region_id = #{record.regionId,jdbcType=INTEGER},
       </if>
       <if test="record.status != null">
         `status` = #{record.status,jdbcType=INTEGER},
       </if>
-      <if test="record.ownerName != null">
-        owner_name = #{record.ownerName,jdbcType=VARCHAR},
+      <if test="record.submitTime != null">
+        submit_time = #{record.submitTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.ownerTelephone != null">
-        owner_telephone = #{record.ownerTelephone,jdbcType=VARCHAR},
+      <if test="record.recoverMethod != null">
+        recover_method = #{record.recoverMethod,jdbcType=INTEGER},
       </if>
-      <if test="record.returnTime != null">
-        return_time = #{record.returnTime,jdbcType=TIMESTAMP},
+      <if test="record.recoverDetails != null">
+        recover_details = #{record.recoverDetails,jdbcType=VARCHAR},
       </if>
-      <if test="record.regionId != null">
-        region_id = #{record.regionId,jdbcType=INTEGER},
+      <if test="record.receiveLocation != null">
+        receive_location = #{record.receiveLocation,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -243,17 +255,18 @@
   <update id="updateByExample" parameterType="map">
     update lost_item
     set id = #{record.id,jdbcType=INTEGER},
-      `name` = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
-      picker = #{record.picker,jdbcType=VARCHAR},
-      pick_date = #{record.pickDate,jdbcType=DATE},
+      picker_id = #{record.pickerId,jdbcType=INTEGER},
+      pick_time = #{record.pickTime,jdbcType=VARCHAR},
       pick_address = #{record.pickAddress,jdbcType=VARCHAR},
-      image = #{record.image,jdbcType=VARCHAR},
+      image_url = #{record.imageUrl,jdbcType=VARCHAR},
+      `label` = #{record.label,jdbcType=VARCHAR},
+      region_id = #{record.regionId,jdbcType=INTEGER},
       `status` = #{record.status,jdbcType=INTEGER},
-      owner_name = #{record.ownerName,jdbcType=VARCHAR},
-      owner_telephone = #{record.ownerTelephone,jdbcType=VARCHAR},
-      return_time = #{record.returnTime,jdbcType=TIMESTAMP},
-      region_id = #{record.regionId,jdbcType=INTEGER}
+      submit_time = #{record.submitTime,jdbcType=TIMESTAMP},
+      recover_method = #{record.recoverMethod,jdbcType=INTEGER},
+      recover_details = #{record.recoverDetails,jdbcType=VARCHAR},
+      receive_location = #{record.receiveLocation,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -261,55 +274,59 @@
   <update id="updateByPrimaryKeySelective" parameterType="team.cfc.lostandfound.model.LostItem">
     update lost_item
     <set>
-      <if test="name != null">
-        `name` = #{name,jdbcType=VARCHAR},
-      </if>
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
-      <if test="picker != null">
-        picker = #{picker,jdbcType=VARCHAR},
+      <if test="pickerId != null">
+        picker_id = #{pickerId,jdbcType=INTEGER},
       </if>
-      <if test="pickDate != null">
-        pick_date = #{pickDate,jdbcType=DATE},
+      <if test="pickTime != null">
+        pick_time = #{pickTime,jdbcType=VARCHAR},
       </if>
       <if test="pickAddress != null">
         pick_address = #{pickAddress,jdbcType=VARCHAR},
       </if>
-      <if test="image != null">
-        image = #{image,jdbcType=VARCHAR},
+      <if test="imageUrl != null">
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        `label` = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="regionId != null">
+        region_id = #{regionId,jdbcType=INTEGER},
       </if>
       <if test="status != null">
         `status` = #{status,jdbcType=INTEGER},
       </if>
-      <if test="ownerName != null">
-        owner_name = #{ownerName,jdbcType=VARCHAR},
+      <if test="submitTime != null">
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="ownerTelephone != null">
-        owner_telephone = #{ownerTelephone,jdbcType=VARCHAR},
+      <if test="recoverMethod != null">
+        recover_method = #{recoverMethod,jdbcType=INTEGER},
       </if>
-      <if test="returnTime != null">
-        return_time = #{returnTime,jdbcType=TIMESTAMP},
+      <if test="recoverDetails != null">
+        recover_details = #{recoverDetails,jdbcType=VARCHAR},
       </if>
-      <if test="regionId != null">
-        region_id = #{regionId,jdbcType=INTEGER},
+      <if test="receiveLocation != null">
+        receive_location = #{receiveLocation,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="team.cfc.lostandfound.model.LostItem">
     update lost_item
-    set `name` = #{name,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      picker = #{picker,jdbcType=VARCHAR},
-      pick_date = #{pickDate,jdbcType=DATE},
+    set description = #{description,jdbcType=VARCHAR},
+      picker_id = #{pickerId,jdbcType=INTEGER},
+      pick_time = #{pickTime,jdbcType=VARCHAR},
       pick_address = #{pickAddress,jdbcType=VARCHAR},
-      image = #{image,jdbcType=VARCHAR},
+      image_url = #{imageUrl,jdbcType=VARCHAR},
+      `label` = #{label,jdbcType=VARCHAR},
+      region_id = #{regionId,jdbcType=INTEGER},
       `status` = #{status,jdbcType=INTEGER},
-      owner_name = #{ownerName,jdbcType=VARCHAR},
-      owner_telephone = #{ownerTelephone,jdbcType=VARCHAR},
-      return_time = #{returnTime,jdbcType=TIMESTAMP},
-      region_id = #{regionId,jdbcType=INTEGER}
+      submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      recover_method = #{recoverMethod,jdbcType=INTEGER},
+      recover_details = #{recoverDetails,jdbcType=VARCHAR},
+      receive_location = #{receiveLocation,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

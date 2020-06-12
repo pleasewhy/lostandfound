@@ -17,19 +17,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import team.cfc.lostandfound.bo.WxUserDetails;
-import team.cfc.lostandfound.common.api.CommonResult;
-import team.cfc.lostandfound.dao.ApplyManagerMsgDao;
-import team.cfc.lostandfound.dao.WxUserDao;
-import team.cfc.lostandfound.model.ApplyManagerMsg;
-import team.cfc.lostandfound.model.WxUser;
-import team.cfc.lostandfound.model.WxUserExample;
+import team.cfc.lostandfound.dao.*;
+import team.cfc.lostandfound.dto.ApplyLostMsgDto;
+import team.cfc.lostandfound.dto.LostItemDto;
+import team.cfc.lostandfound.dto.WxUserDto;
+import team.cfc.lostandfound.model.*;
 import team.cfc.lostandfound.security.util.JwtTokenUtil;
-import team.cfc.lostandfound.service.WxUserService;
+import team.cfc.lostandfound.service.*;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class WxUserServiceImpl implements WxUserService {
@@ -46,13 +49,44 @@ public class WxUserServiceImpl implements WxUserService {
     private WxUserDao wxUserDao;
 
     @Autowired
+    ApplyManagerMsgDao applyManagerMsgDao;
+
+    @Autowired
+    ApplyRegionMsgDao applyRegionMsgDao;
+
+    @Autowired
+    RegionManagerRelationDao managerRelationDao;
+
+    @Autowired
+    RegionCreateRelationDao createRelationDao;
+
+    @Autowired
+    RegionDao regionDao;
+
+    @Autowired
+    LostItemDao lostItemDao;
+
+    @Autowired
+    WxUserInfoDao wxUserInfoDao;
+
+    @Autowired
+    RegionService regionService;
+
+    @Autowired
+    LostItemService lostItemService;
+
+    @Autowired
+    ApplyLostMsgService applyLostMsgService;
+
+    @Autowired
     JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    ApplyManagerMsgDao applyRegionMsgDao;
+    ApplyManagerMsgService applyManagerMsgService;
+
 
     @Override
-    public Map<String, Object> login(String code) {
+    public WxUser login(String code) throws Exception {
         StringBuffer loginUrl = new StringBuffer();
         loginUrl.append(WX_LOGIN_URL).append("?appid=")
                 .append(WX_APP_ID).append("&secret=")
@@ -61,17 +95,13 @@ public class WxUserServiceImpl implements WxUserService {
         String body = getBody(loginUrl.toString());
         Map<String, Object> responseMap = JSONUtil.parseObj(body);
         if ((Integer) responseMap.getOrDefault("errcode", 0) == 0) {
-            String openId = (String) responseMap.get("open_id");
+            String openId = (String) responseMap.get("openid");
             String sessionKey = (String) responseMap.get("session_key");
-            int count = insertWxUser(openId, sessionKey);
-            Map<String, Object> tokenMap = new HashMap<>();
-            String token = jwtTokenUtil.generateToken(loadUserByUsername(openId));
-            tokenMap.put("token", tokenHead + " " + token);
-            return tokenMap;
+            WxUser wxUser = insertOrUpdateWxUser(openId, sessionKey);
+            return wxUser;
         }
-        return responseMap;
+        throw new Exception(body);
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) {
@@ -80,6 +110,11 @@ public class WxUserServiceImpl implements WxUserService {
             return new WxUserDetails(wxUser);
         }
         return null;
+    }
+
+    @Override
+    public WxUser getWxUserByPrimaryKey(int id) {
+        return wxUserDao.selectByPrimaryKey(id);
     }
 
     @Override
@@ -93,26 +128,171 @@ public class WxUserServiceImpl implements WxUserService {
         return null;
     }
 
-    public int insertWxUser(String openId, String sessionKey) {
+    @Override
+    public WxUserDto getWxUserDto(WxUser wxUser) {
+        WxUserDto wxUserDto = new WxUserDto();
+        wxUserDto.setId(wxUser.getId());
+        WxUserInfoExample example = new WxUserInfoExample();
+        example.createCriteria().andWxUserIdEqualTo(wxUser.getId());
+        List<WxUserInfo> infos = wxUserInfoDao.selectByExample(example);
+        if (CollectionUtils.isEmpty(infos)) {
+            return wxUserDto;
+        }
+        wxUserDto.setAvatarUrl(infos.get(0).getAvatarUrl());
+        wxUserDto.setNickName(infos.get(0).getNickName());
+        return wxUserDto;
+    }
+
+
+    @Override
+    public List<Region> getManageRegion(WxUser wxUser) {
+        int wxUserId = wxUser.getId();
+        RegionManagerRelationExample example = new RegionManagerRelationExample();
+        example.createCriteria().andWxUserIdEqualTo(wxUserId);
+        List<RegionManagerRelation> relations = managerRelationDao.selectByExample(example);
+        List<Region> regions = new ArrayList<>();
+        for (RegionManagerRelation r : relations) {
+            Region region = regionService.getRegionByPrimaryKey(r.getRegionId());
+            regions.add(region);
+        }
+        return regions;
+    }
+
+    @Override
+    public Region getCreateRegion(WxUser wxUser) {
+        int wxUserId = wxUser.getId();
+        RegionCreateRelationExample example = new RegionCreateRelationExample();
+        example.createCriteria().andWxUserIdEqualTo(wxUserId);
+        List<RegionCreateRelation> relations = createRelationDao.selectByExample(example);
+        if (relations == null || relations.size() == 0) {
+            return null;
+        }
+        return regionService.getRegionByPrimaryKey(relations.get(0).getRegionId());
+    }
+
+    @Override
+    public List<LostItem> getPickLost(WxUser wxUser) {
+        LostItemExample example = new LostItemExample();
+        example.createCriteria().andPickerIdEqualTo(wxUser.getId());
+        return lostItemDao.selectByExample(example);
+    }
+
+    @Override
+    public Region getSelectRegion(WxUser wxUser) throws Exception {
+        Integer regionId = wxUser.getSelectRegionId();
+        if (regionId == null) {
+            throw new Exception(wxUser.getOpenId() + "未选择区域");
+        }
+        return regionDao.selectByPrimaryKey(regionId);
+    }
+
+    @Override
+    public void setSelectRegion(WxUser wxUser, int regionId) throws Exception {
+        Region result = regionDao.selectByPrimaryKey(regionId);
+        if (result == null || result.getStatus() == 1) {
+            throw new Exception("该区域未创建");
+        }
+        wxUser.setSelectRegionId(regionId);
+        wxUserDao.updateByPrimaryKeySelective(wxUser);
+    }
+
+    public WxUser insertOrUpdateWxUser(String openId, String sessionKey) {
         WxUser wxUser = new WxUser();
         wxUser.setOpenId(openId);
         wxUser.setSessionKey(sessionKey);
         DateTime now = new DateTime();
-        wxUser.setCreateTime(now);
         wxUser.setModifyTime(now);
         WxUserExample example = new WxUserExample();
         example.createCriteria().andOpenIdEqualTo(openId);
         List<WxUser> wxUsers = wxUserDao.selectByExample(example);
         if (wxUsers.size() < 1) {
-            return wxUserDao.insertSelective(wxUser);
+            wxUser.setCreateTime(now);
+            wxUserDao.insertSelective(wxUser);
+        } else {
+            wxUserDao.updateByExampleSelective(wxUser, example);
         }
-        return 0;
+        return wxUser;
+    }
+
+    @Override
+    public List<Region> getMyAllRegion(WxUser wxUser) {
+        List<Region> regionList = getManageRegion(wxUser);
+        Region region = getCreateRegion(wxUser);
+        if (region != null) {
+            regionList.add(region);
+        }
+        return regionList;
+    }
+
+    @Override
+    public WxUserInfo getWxUserInfo(WxUser wxUser) {
+        WxUserInfoExample example = new WxUserInfoExample();
+        example.createCriteria().andWxUserIdEqualTo(wxUser.getId());
+        List<WxUserInfo> wxUserInfos = wxUserInfoDao.selectByExample(example);
+        if (!CollectionUtils.isEmpty(wxUserInfos)) {
+            return wxUserInfos.get(0);
+        }
+        return new WxUserInfo();
+    }
+
+
+    @Override
+    public int getWxUserMsgNum(WxUser wxUser) {
+        Map<String, List> map = getWxUserMsg(wxUser);
+        int res = 0;
+        for (Map.Entry<String, List> entry : map.entrySet()) {
+            if (CollectionUtils.isEmpty(entry.getValue())) {
+                continue;
+            }
+            res += entry.getValue().size();
+        }
+        return res;
+    }
+
+    @Override
+//    @Cacheable(value = "wxUserMsg", key = "#wxUser.id")
+    public Map<String, List> getWxUserMsg(WxUser wxUser) {
+        Map<String, List> res = new HashMap<>();
+        res.put("mySubmitLost", lostItemService.getMySubmitLost(wxUser, LostItemService.CHECKING));  // 我的提交
+        List<ApplyLostMsgDto> dtos = applyLostMsgService.getMyApplyLost(wxUser, ApplyLostMsgService.CHECKING);
+        List<LostItemDto> lostItemDtos = new ArrayList<>();
+        for (ApplyLostMsgDto dto : dtos) {
+            lostItemDtos.add(dto.getArticleDetail());
+        }
+        res.put("myApplyLost", lostItemDtos);  // 我的申请
+        res.put("managerApply", applyManagerMsgService.getApplyManagerMsg(wxUser));  // 我创建区域的管理员申请
+
+        List<ApplyLostMsgDto> lostItemApplyDtos = new ArrayList<>();
+        List<ApplyLostMsg> msgs = applyLostMsgService.getApplyLostInMyRegion(wxUser);
+        msgs.addAll(applyLostMsgService.getApplyLostMyLostItem(wxUser));
+        for (ApplyLostMsg msg : msgs) {
+            ApplyLostMsgDto applyLostMsgDto = new ApplyLostMsgDto();
+            applyLostMsgDto.setApplyRecordId(msg.getId());
+            int lostItemId = msg.getLostItemId();
+            applyLostMsgDto.setArticleDetail(lostItemService.convert(lostItemService.getLostItemById(lostItemId)));
+            lostItemApplyDtos.add(applyLostMsgDto);
+        }
+        res.put("lostItemApply", lostItemApplyDtos);  // 我管理区域的丢失物品申请或者申请我提交的物品的申请信息
+        res.put("checkLostItem", lostItemService.getNotCheckLostInMyRegion(wxUser));  // 审核丢失物品
+        return res;
+    }
+
+    @Override
+    public List<ApplyLostMsgDto> getCheckedApplyLost(WxUser wxUser) {
+        List<ApplyLostMsgDto> success = applyLostMsgService.getMyApplyLost(wxUser, ApplyLostMsgService.SUCCESS);
+        List<ApplyLostMsgDto> failed = applyLostMsgService.getMyApplyLost(wxUser, ApplyLostMsgService.FAILED);
+        List<ApplyLostMsgDto> outDate = applyLostMsgService.getMyApplyLost(wxUser, ApplyLostMsgService.OUTDATE);
+        success.addAll(failed);
+        success.addAll(outDate);
+        for (ApplyLostMsgDto dto : success) {
+            dto.setHandleStatus(dto.getStatusCode() - 1);
+        }
+        return success;
     }
 
     public String getBody(String url) {
         String body = null;
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
-            logger.info("create httppost:" + url);
             HttpGet get = new HttpGet(url);
             get.addHeader("Accept-Charset", "utf-8");
             HttpResponse response = sendRequest(httpClient, get);
@@ -133,7 +313,6 @@ public class WxUserServiceImpl implements WxUserService {
     private String parseResponse(HttpResponse response) {
         logger.info("get response from http server..");
         HttpEntity entity = response.getEntity();
-        logger.info("response status: " + response.getStatusLine());
         Charset charset = ContentType.getOrDefault(entity).getCharset();
         if (charset != null) {
             logger.info(charset.name());
@@ -142,7 +321,6 @@ public class WxUserServiceImpl implements WxUserService {
         String body = null;
         try {
             body = EntityUtils.toString(entity, "utf-8");
-            logger.info("body " + body);
         } catch (IOException e) {
             logger.warn("{}: cannot parse the entity", e.getMessage());
         }
