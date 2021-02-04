@@ -101,4 +101,10 @@ public interface RegionService {
      */
     int addRegion(String regionName);
 
+    /**
+     * 更新区域
+     */
+    int updateReionByPrimaryKey(Region region);
+
+
 }

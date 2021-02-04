@@ -9,11 +9,18 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB  # 文件大小限制为10MB
+  resources:
+    cache:
+      cachecontrol:
+        max-age: 2592000
+        must-revalidate: on
+        no-cache: on
 jwt:
   tokenHeader: Authorization
   secret: lostandfound-secret
   expiration: 604800
   tokenHead: Bearer
+
 
 
 list:
@@ -60,8 +67,8 @@ mybatis:
 
 
 spring.mail.host: smtp.qq.com
-spring.mail.username: 1943788269@qq.com
-spring.mail.password: ssbhopzxfbqaefcg
+spring.mail.username: xxxxxx
+spring.mail.password: xxxxxx
 spring.mail.default-encoding: UTF-8
 spring.mail.port: 465
 spring.mail.properties.mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory

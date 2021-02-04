@@ -227,4 +227,9 @@ public class RegionServiceImpl implements RegionService {
         region.setName(regionName);
         return regionDao.insertSelective(region);
     }
+
+    @Override
+    public int updateReionByPrimaryKey(Region region) {
+        return regionDao.updateByPrimaryKeySelective(region);
+    }
 }

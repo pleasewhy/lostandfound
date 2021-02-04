@@ -13,6 +13,7 @@ import team.cfc.lostandfound.service.LostItemService;
 import team.cfc.lostandfound.service.RegionService;
 import team.cfc.lostandfound.service.WxUserService;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +36,6 @@ public class ApplyLostMsgServiceImpl implements ApplyLostMsgService {
     LostItemService lostItemService;
 
 
-
     @Override
     public int insertApplyMsg(ApplyLostMsg applyLostMsg) {
         return applyLostMsgDao.insertSelective(applyLostMsg);
@@ -53,10 +53,17 @@ public class ApplyLostMsgServiceImpl implements ApplyLostMsgService {
         List<ApplyLostMsg> msgs = new ArrayList<>();
         ApplyLostMsgExample example = new ApplyLostMsgExample();
         for (Region region : regionList) {
-            example.createCriteria().andRegionIdEqualTo(region.getId()).andStatusEqualTo(0);
+            example.createCriteria()
+                    .andRegionIdEqualTo(region.getId())
+                    .andStatusEqualTo(0);
             List<ApplyLostMsg> applyLostMsgs = applyLostMsgDao.selectByExample(example);
             if (!CollectionUtils.isEmpty(applyLostMsgs)) {
-                msgs.addAll(applyLostMsgs);
+                for (ApplyLostMsg msg : applyLostMsgs) {
+                    LostItem item = lostItemService.getLostItemById(msg.getLostItemId());
+                    if (item.getRecoverMethod() == 0) {
+                        msgs.add(msg);
+                    }
+                }
             }
             example.clear();
         }
@@ -65,11 +72,12 @@ public class ApplyLostMsgServiceImpl implements ApplyLostMsgService {
 
     @Override
     public List<ApplyLostMsg> getApplyLostMyLostItem(WxUser wxUser) {
-        List<LostItemDto> lostItem = lostItemService.getMySubmitLost(wxUser,LostItemService.DETERMINE);
+        List<LostItemDto> lostItem = lostItemService.getMySubmitLost(wxUser, LostItemService.DETERMINE);
         List<ApplyLostMsg> msgs = new ArrayList<>();
         ApplyLostMsgExample example = new ApplyLostMsgExample();
         for (LostItemDto dto : lostItem) {
-            example.createCriteria().andLostItemIdEqualTo(dto.getArticleId());
+            example.createCriteria().andLostItemIdEqualTo(dto.getArticleId())
+                    .andStatusEqualTo(ApplyLostMsgService.CHECKING);
             List<ApplyLostMsg> applyLostMsgs = applyLostMsgDao.selectByExample(example);
             if (!CollectionUtils.isEmpty(applyLostMsgs)) {
                 msgs.addAll(applyLostMsgs);
@@ -79,6 +87,7 @@ public class ApplyLostMsgServiceImpl implements ApplyLostMsgService {
         return msgs;
     }
 
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd hh:mm");
     @Override
     public List<ApplyLostMsgDto> getMyApplyLost(WxUser wxUser, int status) {
         List<ApplyLostMsg> msgs = new ArrayList<>();
@@ -94,6 +103,7 @@ public class ApplyLostMsgServiceImpl implements ApplyLostMsgService {
             LostItem lostItem = lostItemService.getLostItemById(msg.getLostItemId());
             ApplyLostMsgDto dto = new ApplyLostMsgDto();
             dto.setApplyRecordId(msg.getId());
+            dto.setApplyTime(simpleDateFormat.format(msg.getApplyTime()));
             dto.setArticleDetail(lostItemService.convert(lostItem));
             dto.setStatusCode(status);
             res.add(dto);

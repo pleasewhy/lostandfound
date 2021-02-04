@@ -50,4 +50,11 @@ public class AdminController {
         return adminService.login(username, password);
     }
 
+    @GetMapping(value = "/modifyRegionName")
+    public CommonResult modifyRegion(int regionId, String regionName) {
+        Region region = regionService.getRegionByPrimaryKey(regionId);
+        region.setName(regionName);
+        regionService.updateReionByPrimaryKey(region);
+        return CommonResult.success("", "操作成功");
+    }
 }

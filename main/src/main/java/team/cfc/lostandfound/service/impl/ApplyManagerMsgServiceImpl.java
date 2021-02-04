@@ -1,5 +1,6 @@
 package team.cfc.lostandfound.service.impl;
 
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -11,6 +12,7 @@ import team.cfc.lostandfound.service.RegionService;
 import team.cfc.lostandfound.service.WxUserService;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class ApplyManagerMsgServiceImpl implements ApplyManagerMsgService {
         return applyManagerMsgDao.insertSelective(managerMsg);
     }
 
+    SimpleDateFormat sdf = new SimpleDateFormat("MM-dd hh:mm");
     @Override
     public ApplyManagerDto convert(ApplyManagerMsg applyManagerMsg) {
         ApplyManagerDto applyManagerDto = new ApplyManagerDto();
@@ -46,6 +49,7 @@ public class ApplyManagerMsgServiceImpl implements ApplyManagerMsgService {
         WxUserInfo wxUserInfo = wxUserService.getWxUserInfo(wxUser);
         applyManagerDto.setApplyWxUserName(wxUserInfo.getNickName());
         applyManagerDto.setApplyWxUserAvatarUrl(wxUserInfo.getAvatarUrl());
+        applyManagerDto.setApplyTime(sdf.format(applyManagerMsg.getApplyTime()));
         return applyManagerDto;
     }
 

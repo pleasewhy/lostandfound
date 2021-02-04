@@ -65,6 +65,7 @@ public class LostItemController {
             map.put("url", endpoint + "/" + objectName);
             return CommonResult.success(map);
         } catch (IOException e) {
+            e.getMessage();
             LOGGER.info("上传发生错误: {}！", e.getMessage());
             return CommonResult.failed("上传图片失败");
         }

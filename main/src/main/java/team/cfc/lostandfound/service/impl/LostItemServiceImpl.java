@@ -238,8 +238,7 @@ public class LostItemServiceImpl implements LostItemService {
         List<LostItem> lostItems = lostItemDao.selectByExample(example);
         return convert(lostItems);
     }
-
-    // TODO 测试
+    
     List<LostItem> getNotCheckLostInRegion(Region region) {
         LostItemExample example = new LostItemExample();
         example.createCriteria().andRegionIdEqualTo(region.getId()).andStatusEqualTo(0);

@@ -9,11 +9,18 @@ spring:
   servlet:
     multipart:
       max-file-size: 10MB  # 文件大小限制为10MB
+  resources:
+    cache:
+      cachecontrol:
+        max-age: 2592000
+        must-revalidate: on
+        no-cache: on
 jwt:
   tokenHeader: Authorization
   secret: lostandfound-secret
   expiration: 604800
   tokenHead: Bearer
+
 
 
 list:

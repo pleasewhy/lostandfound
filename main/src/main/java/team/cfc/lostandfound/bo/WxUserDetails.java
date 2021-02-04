@@ -7,7 +7,6 @@ import team.cfc.lostandfound.model.WxUser;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 public class WxUserDetails implements UserDetails {
 
@@ -17,6 +16,7 @@ public class WxUserDetails implements UserDetails {
     public WxUserDetails(WxUser wxUser){
         this.wxUser = wxUser;
     }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         ArrayList<GrantedAuthority> arrayList = new ArrayList();

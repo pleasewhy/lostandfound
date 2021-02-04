@@ -1,10 +1,7 @@
 package team.cfc.lostandfound.common.api;
 
-import net.coobird.thumbnailator.Thumbnails;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
 

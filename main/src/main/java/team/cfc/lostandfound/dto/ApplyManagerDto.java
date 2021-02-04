@@ -13,5 +13,6 @@ public class ApplyManagerDto implements Serializable {
     private String regionName;
     private String applyWxUserName;
     private String applyWxUserAvatarUrl;
+    private String applyTime;
     private static final long serialVersionUID = 1L;
 }

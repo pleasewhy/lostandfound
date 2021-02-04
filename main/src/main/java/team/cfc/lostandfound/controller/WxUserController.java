@@ -273,6 +273,9 @@ public class WxUserController {
         ApplyLostMsg msg = applyLostMsgService.selectByPrimaryKey(applyRecordId);
         msg.setStatus(ApplyLostMsgService.SUCCESS);
         applyLostMsgService.updateApplyLostMsg(msg);
+        LostItem lostItem = lostItemService.getLostItemById(msg.getLostItemId());
+        lostItem.setStatus(LostItemService.RETURNED);
+        lostItemService.updateByPrimaryKeySelective(lostItem);
         return CommonResult.success("", "操作成功");
     }
 
@@ -281,6 +284,9 @@ public class WxUserController {
         ApplyLostMsg msg = applyLostMsgService.selectByPrimaryKey(applyRecordId);
         msg.setStatus(ApplyLostMsgService.FAILED);
         applyLostMsgService.updateApplyLostMsg(msg);
+        LostItem lostItem = lostItemService.getLostItemById(msg.getLostItemId());
+        lostItem.setStatus(LostItemService.DETERMINE);
+        lostItemService.updateByPrimaryKeySelective(lostItem);
         return CommonResult.success("", "操作成功");
     }
 
@@ -289,7 +295,7 @@ public class WxUserController {
         ApplyManagerMsg msg = applyManagerMsgService.selectByPrimaryKey(applyRecordId);
         msg.setStatus(ApplyManagerMsgService.SUCCESS);
         Region region = regionService.getRegionByPrimaryKey(msg.getRegionId());
-        regionService.addRegionManager(region.getId(),msg.getWxUserId());
+        regionService.addRegionManager(region.getId(), msg.getWxUserId());
         applyManagerMsgService.updateApplyManagerMsg(msg);
         return CommonResult.success("", "操作成功");
     }

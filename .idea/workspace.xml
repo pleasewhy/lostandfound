@@ -3,6 +3,9 @@
   <component name="AnalysisUIOptions">
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -22,15 +25,66 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="631edc32-71a0-4169-a9a6-ab326cb42ae0" name="Default Changelist" comment="正式版1.0">
+    <list default="true" id="631edc32-71a0-4169-a9a6-ab326cb42ae0" name="Default Changelist" comment="修复管理员申请bug">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api/SomeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/common/src/main/java/team/cfc/lostandfound/common/api/SomeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/team/cfc/lostandfound/common/api/CommonPage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/team/cfc/lostandfound/common/api/CommonResult.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/team/cfc/lostandfound/common/api/IErrorCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/team/cfc/lostandfound/common/api/ResultCode.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/classes/team/cfc/lostandfound/common/api/SomeUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/common-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/Applocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/Applocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/bo/WxUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/bo/WxUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/LostItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/LostItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/WxUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/controller/WxUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/dto/ApplyLostMsgDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/dto/ApplyLostMsgDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/dto/ApplyManagerDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/dto/ApplyManagerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/filter/AddUsernameFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/filter/AddUsernameFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/RegionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/RegionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/ApplyLostMsgServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/ApplyLostMsgServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/ApplyManagerMsgServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/ApplyManagerMsgServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/LostItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/LostItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/RegionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/RegionServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/WxUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/team/cfc/lostandfound/service/impl/WxUserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/classes/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/application-prod.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/Applocation.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/Applocation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/controller/LostItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/controller/LostItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/service/impl/LostItemServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/classes/team/cfc/lostandfound/service/impl/LostItemServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/classes/team/cfc/lostandfound/dao/LostItemDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/classes/team/cfc/lostandfound/mapper/LostItemDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/classes/team/cfc/lostandfound/model/LostItem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/classes/team/cfc/lostandfound/model/LostItemExample$Criteria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/classes/team/cfc/lostandfound/model/LostItemExample$Criterion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/classes/team/cfc/lostandfound/model/LostItemExample$GeneratedCriteria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/classes/team/cfc/lostandfound/model/LostItemExample.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mbg/target/mbg-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +109,8 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="C:/Program Files (x86)/Apache Software Foundation/apache-maven-3.6.3" />
-        <option name="userSettingsFile" value="C:\Program Files (x86)\Apache Software Foundation\apache-maven-3.6.3\conf\settings.xml" />
+        <option name="mavenHome" value="C:\Program Files (x86)\Apache Software\apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="C:\Program Files (x86)\Apache Software\apache-maven-3.6.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -82,7 +136,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.data.extractors.current.id" value="SQL Inserts" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/mbg/src/main/java" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/main/target/main-1.0-SNAPSHOT.jar" />
+    <property name="last_opened_file_path" value="F:/外包/mall-master" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -93,7 +147,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
@@ -154,6 +208,7 @@
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="mvn package" />
+      <command value="mvn clean" />
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.Applocation">
@@ -166,6 +221,7 @@
     </configuration>
     <configuration name="ECS on Alibaba Cloud" type="ECS_RUN_CONFIGRATION" factoryName="Ecs configuration factory">
       <option name="accountModel" />
+      <option name="accountModels" />
       <option name="address" />
       <option name="afterCommand" value="" />
       <option name="alreadyReset" value="true" />
@@ -186,6 +242,8 @@
           </option>
         </EcsInstance>
       </option>
+      <option name="ecsInstances" />
+      <option name="hostIds" />
       <option name="hostTagId" value="0" />
       <option name="location" value="/root/demo" />
       <option name="pathOrUrl" value="D:\IdeaProjects\lostandfound\target\lostandfound-1.0-SNAPSHOT.pom" />
@@ -222,7 +280,6 @@
     <list>
       <item itemvalue="Application.Test" />
       <item itemvalue="Docker.docker/Dockerfile" />
-      <item itemvalue="ECS on Alibaba Cloud.ECS on Alibaba Cloud" />
       <item itemvalue="Spring Boot.Applocation" />
     </list>
     <recent_temporary>
@@ -238,6 +295,7 @@
       </map>
     </option>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SpringBootOptions">
     <option name="showAdditionalConfigNotification" value="false" />
   </component>
@@ -315,7 +373,28 @@
       <workItem from="1591580346466" duration="10419000" />
       <workItem from="1591664945827" duration="15702000" />
       <workItem from="1591767966338" duration="16829000" />
-      <workItem from="1591874839755" duration="15147000" />
+      <workItem from="1591874839755" duration="28322000" />
+      <workItem from="1592051235370" duration="11953000" />
+      <workItem from="1592183248092" duration="7399000" />
+      <workItem from="1592196006284" duration="8144000" />
+      <workItem from="1592287819847" duration="127000" />
+      <workItem from="1597329411526" duration="402000" />
+      <workItem from="1599049746664" duration="741000" />
+      <workItem from="1599483830005" duration="747000" />
+      <workItem from="1602050096217" duration="2095000" />
+      <workItem from="1602413821251" duration="732000" />
+      <workItem from="1608909791546" duration="417000" />
+      <workItem from="1609227222778" duration="721000" />
+      <workItem from="1609227979132" duration="95000" />
+      <workItem from="1609228082420" duration="860000" />
+      <workItem from="1609229048312" duration="10333000" />
+      <workItem from="1609293172814" duration="937000" />
+      <workItem from="1609294309514" duration="4017000" />
+      <workItem from="1609393827045" duration="12350000" />
+      <workItem from="1609487998832" duration="618000" />
+      <workItem from="1610885581975" duration="1319000" />
+      <workItem from="1611047562816" duration="1464000" />
+      <workItem from="1612413294045" duration="777000" />
     </task>
     <task id="LOCAL-00001" summary="更新登录api">
       <created>1586007427377</created>
@@ -338,11 +417,21 @@
       <option name="project" value="LOCAL" />
       <updated>1591964355340</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="修复管理员申请bug">
+      <created>1591967373654</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1591967373654</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.configurationType" implementationName="ECS_RUN_CONFIGRATION" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -361,228 +450,81 @@
     <MESSAGE value="更新登录api" />
     <MESSAGE value="一些api" />
     <MESSAGE value="正式版1.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="正式版1.0" />
+    <MESSAGE value="修复管理员申请bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复管理员申请bug" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="533" y="0" key="#Auto_Import" timestamp="1588912553897">
+    <state x="502" y="235" key="#Notifications" timestamp="1609294325739">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="533" y="0" key="#Auto_Import/0.0.1536.824@0.0.1536.824" timestamp="1588912553897" />
-    <state x="360" y="73" key="#Docker" timestamp="1585140543160">
+    <state x="502" y="235" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1609294325739" />
+    <state x="249" y="0" key="#Project_Structure" timestamp="1609228512967">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="360" y="73" key="#Docker/0.0.1536.824@0.0.1536.824" timestamp="1585140543160" />
-    <state x="484" y="98" key="#ECS_on_Alibaba_Cloud" timestamp="1585193141386">
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1609228512967" />
+    <state x="223" y="59" width="1089" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609228379838">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="484" y="98" key="#ECS_on_Alibaba_Cloud/0.0.1536.824@0.0.1536.824" timestamp="1585193141386" />
-    <state x="361" y="73" key="#HTTP_Proxy" timestamp="1585116402406">
+    <state x="223" y="59" width="1089" height="765" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1609228379838" />
+    <state x="498" y="226" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1609228358578">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="73" key="#HTTP_Proxy/0.0.1536.824@0.0.1536.824" timestamp="1585116402406" />
-    <state x="651" y="274" key="#Notifications" timestamp="1589435065292">
+    <state x="498" y="226" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1609228358578" />
+    <state x="827" y="168" key="FileChooserDialogImpl" timestamp="1609338350224">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="651" y="274" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1589435065292" />
-    <state x="361" y="0" key="#Project_Structure" timestamp="1591439147026">
+    <state x="827" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1609338350224" />
+    <state width="1493" height="238" key="GridCell.Tab.0.bottom" timestamp="1609253152085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1591439147026" />
-    <state x="361" y="74" key="#SQL_Dialects" timestamp="1585370319117">
+    <state width="1493" height="238" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609253152085" />
+    <state width="1493" height="238" key="GridCell.Tab.0.center" timestamp="1609253152085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="74" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1585370319117" />
-    <state x="447" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591963946176">
+    <state width="1493" height="238" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1609253152085" />
+    <state width="1493" height="238" key="GridCell.Tab.0.left" timestamp="1609253152085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="447" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1591963946176" />
-    <state x="513" y="221" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1585234495824">
+    <state width="1493" height="238" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1609253152085" />
+    <state width="1493" height="238" key="GridCell.Tab.0.right" timestamp="1609253152085">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="513" y="221" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1585234495824" />
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1591963224854">
+    <state width="1493" height="238" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1609253152085" />
+    <state width="1493" height="308" key="GridCell.Tab.1.bottom" timestamp="1609241980306">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1591963224854" />
-    <state x="499" y="193" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1585218569135">
+    <state width="1493" height="308" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1609241980306" />
+    <state width="1493" height="308" key="GridCell.Tab.1.center" timestamp="1609241980306">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="193" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1585218569135" />
-    <state x="449" y="150" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1585655251693">
+    <state width="1493" height="308" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1609241980306" />
+    <state width="1493" height="308" key="GridCell.Tab.1.left" timestamp="1609241980306">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="150" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824@0.0.1536.824" timestamp="1585655251693" />
-    <state x="428" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585229693608">
+    <state width="1493" height="308" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1609241980306" />
+    <state width="1493" height="308" key="GridCell.Tab.1.right" timestamp="1609241980306">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="428" y="340" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1585229693608" />
-    <state x="553" y="279" width="448" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1591682233294">
+    <state width="1493" height="308" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1609241980306" />
+    <state x="408" y="115" key="NewModule_or_Project.wizard" timestamp="1609228506881">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="553" y="279" width="448" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1591682233294" />
-    <state x="210" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1591770086602">
+    <state x="408" y="115" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1609228506881" />
+    <state x="276" y="79" width="1090" height="711" key="SettingsEditor" timestamp="1609293960310">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="210" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1591770086602" />
-    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587379063290">
+    <state x="276" y="79" width="1090" height="711" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1609293960310" />
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1612413614083">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="162" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1587379063290" />
-    <state x="484" y="9" key="#docker/Dockerfile" timestamp="1585140549348">
+    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1612413614083" />
+    <state x="467" y="144" width="602" height="536" key="find.popup" timestamp="1610889688037">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="484" y="9" key="#docker/Dockerfile/0.0.1536.824@0.0.1536.824" timestamp="1585140549348" />
-    <state x="333" y="8" key="CommitChangelistDialog2" timestamp="1586007418304">
+    <state x="467" y="144" width="602" height="536" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1610889688037" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1609232296999">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="333" y="8" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1586007418304" />
-    <state x="449" y="167" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1587400853193">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="449" y="167" key="DUMP_DIALOG_DIMENSION_KEY/0.0.1536.824@0.0.1536.824" timestamp="1587400853193" />
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog" timestamp="1587543230145">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1587543230145" />
-    <state x="549" y="170" key="FileChooserDialogImpl" timestamp="1591966959579">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="549" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1591966959579" />
-    <state width="1493" height="217" key="GridCell.Tab.0.bottom" timestamp="1591967006208">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591967006208" />
-    <state width="1493" height="217" key="GridCell.Tab.0.center" timestamp="1591967006208">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1591967006208" />
-    <state width="1493" height="217" key="GridCell.Tab.0.left" timestamp="1591967006208">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1591967006208" />
-    <state width="1493" height="217" key="GridCell.Tab.0.right" timestamp="1591967006208">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1591967006208" />
-    <state width="1493" height="217" key="GridCell.Tab.1.bottom" timestamp="1591963960088">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591963960088" />
-    <state width="1493" height="217" key="GridCell.Tab.1.center" timestamp="1591963960088">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1591963960088" />
-    <state width="1493" height="217" key="GridCell.Tab.1.left" timestamp="1591963960088">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1591963960088" />
-    <state width="1493" height="217" key="GridCell.Tab.1.right" timestamp="1591963960088">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="217" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1591963960088" />
-    <state width="1493" height="261" key="GridCell.Tab.2.bottom" timestamp="1591878947582">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1591878947582" />
-    <state width="1493" height="261" key="GridCell.Tab.2.center" timestamp="1591878947582">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1591878947582" />
-    <state width="1493" height="261" key="GridCell.Tab.2.left" timestamp="1591878947582">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1591878947582" />
-    <state width="1493" height="261" key="GridCell.Tab.2.right" timestamp="1591878947582">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="261" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1591878947582" />
-    <state width="212" height="477" key="HiddenNamespacesPopup" timestamp="1586688825978">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="212" height="477" key="HiddenNamespacesPopup/0.0.1536.824@0.0.1536.824" timestamp="1586688825978" />
-    <state x="349" y="150" key="IDE.errors.dialog" timestamp="1589701772157">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="349" y="150" key="IDE.errors.dialog/0.0.1536.824@0.0.1536.824" timestamp="1589701772157" />
-    <state x="299" y="70" key="Maven.ArtifactSearchDialog" timestamp="1585833244635">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="299" y="70" key="Maven.ArtifactSearchDialog/0.0.1536.824@0.0.1536.824" timestamp="1585833244635" />
-    <state x="408" y="115" key="NewModule_or_Project.wizard" timestamp="1587816060899">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="408" y="115" key="NewModule_or_Project.wizard/0.0.1536.824@0.0.1536.824" timestamp="1587816060899" />
-    <state x="282" y="0" key="SettingsEditor" timestamp="1591361784261">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="282" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1591361784261" />
-    <state x="490" y="154" width="561" height="524" key="StructurePopup" timestamp="1591785829574">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="490" y="154" width="561" height="524" key="StructurePopup/0.0.1536.824@0.0.1536.824" timestamp="1591785829574" />
-    <state width="538" height="603" key="SwitcherDM" timestamp="1591966815006">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="538" height="603" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1591966815006" />
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1591964512485">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="361" y="145" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1591964512485" />
-    <state x="565" y="193" key="chooseDestDirectoryDialog" timestamp="1585219390053">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="565" y="193" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1585219390053" />
-    <state x="631" y="256" key="cloudConfig.SelfSettingsDialog" timestamp="1587399771596">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="631" y="256" key="cloudConfig.SelfSettingsDialog/0.0.1536.824@0.0.1536.824" timestamp="1587399771596" />
-    <state x="667" y="297" width="334" height="249" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1589123757603">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="667" y="297" width="334" height="249" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1536.824@0.0.1536.824" timestamp="1589123757603" />
-    <state x="349" y="70" key="com.intellij.database.dbimport.ImportDialog" timestamp="1591427752262">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="349" y="70" key="com.intellij.database.dbimport.ImportDialog/0.0.1536.824@0.0.1536.824" timestamp="1591427752262" />
-    <state x="499" y="217" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog" timestamp="1589125557151">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="217" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1536.824@0.0.1536.824" timestamp="1589125557151" />
-    <state x="553" y="238" width="439" height="363" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1588685844461">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="553" y="238" width="439" height="363" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1536.824@0.0.1536.824" timestamp="1588685844461" />
-    <state x="665" y="143" width="512" height="524" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1591669536196">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="665" y="143" width="512" height="524" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1591669536196" />
-    <state x="461" y="240" key="com.intellij.ide.util.TipDialog" timestamp="1587026575708">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="461" y="240" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1587026575708" />
-    <state x="564" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587649187106">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="564" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1587649187106" />
-    <state width="500" height="350" key="documentation.popup.size" timestamp="1591362987304">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="500" height="350" key="documentation.popup.size/0.0.1536.824@0.0.1536.824" timestamp="1591362987304" />
-    <state x="457" y="44" width="755" height="735" key="find.popup" timestamp="1591966131764">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="457" y="44" width="755" height="735" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1591966131764" />
-    <state x="178" y="44" key="new project wizard" timestamp="1590237166646">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="178" y="44" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1590237166646" />
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup" timestamp="1591774082025">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1591774082025" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1591785020646">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1591785020646" />
+    <state x="425" y="187" width="672" height="677" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1609232296999" />
   </component>
 </project>

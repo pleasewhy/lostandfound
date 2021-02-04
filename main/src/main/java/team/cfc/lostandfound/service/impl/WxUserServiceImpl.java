@@ -29,6 +29,7 @@ import team.cfc.lostandfound.service.*;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,8 +39,8 @@ import java.util.Map;
 public class WxUserServiceImpl implements WxUserService {
     private Logger logger = LoggerFactory.getLogger(WxUserService.class);
 
-    public static final String WX_APP_ID = "wxc94daa26697fc479";
-    public static final String WX_APP_KEY = "29b2e7ff5cbde050793e7201b61101ef";
+    public static final String WX_APP_ID = "xxx";
+    public static final String WX_APP_KEY = "xxxx";
     public static final String WX_LOGIN_URL = "https://api.weixin.qq.com/sns/jscode2session";
 
     @Value("${jwt.tokenHead}")
@@ -240,8 +241,11 @@ public class WxUserServiceImpl implements WxUserService {
     public int getWxUserMsgNum(WxUser wxUser) {
         Map<String, List> map = getWxUserMsg(wxUser);
         int res = 0;
-        for (Map.Entry<String, List> entry : map.entrySet()) {
-            if (CollectionUtils.isEmpty(entry.getValue())) {
+        for (Map.Entry<String, List> entry : map.entrySet()
+        ) {
+            if (CollectionUtils.isEmpty(entry.getValue())
+                    || "mySubmitLost".equals(entry.getKey())
+                    || "myApplyLost".equals(entry.getKey())) {
                 continue;
             }
             res += entry.getValue().size();
@@ -249,6 +253,9 @@ public class WxUserServiceImpl implements WxUserService {
         return res;
     }
 
+
+
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd hh:mm");
     @Override
 //    @Cacheable(value = "wxUserMsg", key = "#wxUser.id")
     public Map<String, List> getWxUserMsg(WxUser wxUser) {
@@ -264,15 +271,18 @@ public class WxUserServiceImpl implements WxUserService {
 
         List<ApplyLostMsgDto> lostItemApplyDtos = new ArrayList<>();
         List<ApplyLostMsg> msgs = applyLostMsgService.getApplyLostInMyRegion(wxUser);
-        msgs.addAll(applyLostMsgService.getApplyLostMyLostItem(wxUser));
+        List<ApplyLostMsg> applyLostMyLostItem = applyLostMsgService.getApplyLostMyLostItem(wxUser);
+        msgs.addAll(applyLostMyLostItem);
         for (ApplyLostMsg msg : msgs) {
             ApplyLostMsgDto applyLostMsgDto = new ApplyLostMsgDto();
             applyLostMsgDto.setApplyRecordId(msg.getId());
+            applyLostMsgDto.setApplyTime(simpleDateFormat.format(msg.getApplyTime()));
+
             int lostItemId = msg.getLostItemId();
             applyLostMsgDto.setArticleDetail(lostItemService.convert(lostItemService.getLostItemById(lostItemId)));
             lostItemApplyDtos.add(applyLostMsgDto);
         }
-        res.put("lostItemApply", lostItemApplyDtos);  // 我管理区域的丢失物品申请或者申请我提交的物品的申请信息
+        res.put("lostItemApply", lostItemApplyDtos);  // 我管理区域的丢失物品申请
         res.put("checkLostItem", lostItemService.getNotCheckLostInMyRegion(wxUser));  // 审核丢失物品
         return res;
     }
